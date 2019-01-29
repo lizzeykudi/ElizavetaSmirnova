@@ -83,6 +83,6 @@ public class HW1PageObjectPattern {
         Assert.assertEquals(indexPage.isFooterDisplayed(), true);
 
         //17 Close Browser
-        driver.close();
+        driver.quit();
     }
 }
