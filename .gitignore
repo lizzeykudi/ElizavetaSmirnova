@@ -2,3 +2,4 @@
 /.idea/
 /src/test/resources/hw2/ex2/Run.java
 /target/
+# TODO IDEA files should be ignored

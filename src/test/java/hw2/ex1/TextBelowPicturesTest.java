@@ -23,6 +23,7 @@ public class TextBelowPicturesTest {
 
     @DataProvider(parallel = true)
     public Object[][] getData() {
+        // TODO Warning
         Object[][] objects = new Object[][] {
                 {webElements.get(0),
                         "To include good practices\n" +
