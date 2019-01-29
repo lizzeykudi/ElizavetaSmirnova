@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO I assume that everything working fine, but could you please rename tests classes/methods in according to purpose/groups ?
+// TODO It will be quite easier to figure out what exactly the test methods were execute.
+
 public class Class1 {
     @Test(groups = "Smoke")
     public void copy1() {

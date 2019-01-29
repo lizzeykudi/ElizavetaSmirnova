@@ -4,6 +4,7 @@
     <test name="Regression" >
         <groups>
             <run>
+                <!--TODO Take a look on IDEA warning-->
                 <include name="Regression"></include>
             </run>
         </groups>

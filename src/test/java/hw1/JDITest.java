@@ -38,17 +38,21 @@ public class JDITest {
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> webElements = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li > a"));
         Assert.assertEquals(webElements.size(), 4);
+        // TODO Pay attention on IDEA warning
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                 .containsAll(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS")), true);
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
+        // TODO Quite weird locator, you should never ever developed stuff like that...
         webElements = driver.findElements(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > div > div > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
         Assert.assertEquals(webElements.stream().filter(WebElement::isDisplayed).collect(Collectors.toList()).size(), 4);
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
+
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
+        // TODO Warning
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                         .containsAll(Arrays.asList(
                                 "To include good practices\n" +
@@ -68,6 +72,7 @@ public class JDITest {
 
         //9 Assert a text of the main headers
         Assert.assertEquals(driver.findElement(By.cssSelector(".main-title.text-center")).getText(), "EPAM FRAMEWORK WISHES…");
+
         Assert.assertEquals(driver.findElement(By.cssSelector(".main-txt.text-center")).getText().startsWith("LOREM IPSUM"), true);
 
         //10 Assert that there is the iframe in the center of page
@@ -93,7 +98,7 @@ public class JDITest {
 
         //16 Assert that there is Footer
         Assert.assertEquals(driver.findElement(By.cssSelector("footer")).isDisplayed(), true);
-
+        // !TODO Warning
         //17 Close Browser
         driver.close();
     }

@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO Yep, this's fine.
 public class JDITestRefactorWithAnnotation extends SeleniumBase{
     WebDriver driver;
 
