@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea/
-/src/test/resources/hw2/ex2/Run.java
+*.iml
 /target/
+out/
 # TODO IDEA files should be ignored
