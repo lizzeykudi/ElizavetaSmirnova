@@ -39,6 +39,7 @@ public class JDITest {
         List<WebElement> webElements = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li > a"));
         Assert.assertEquals(webElements.size(), 4);
         // TODO Pay attention on IDEA warning
+        // TODO I dont see
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                 .containsAll(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS")), true);
 
@@ -53,6 +54,7 @@ public class JDITest {
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
         // TODO Warning
+        // TODO I dont see
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                         .containsAll(Arrays.asList(
                                 "To include good practices\n" +

@@ -12,10 +12,9 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class TextBelowPicturesTest {
-    List<WebElement> webElements;
+    private List<WebElement> webElements;
     @BeforeClass
     public void beforeClass() {
-        System.out.println("beforeClass"+Thread.currentThread());
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("https://epam.github.io/JDI/");
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > span"));
@@ -24,7 +23,7 @@ public class TextBelowPicturesTest {
     @DataProvider(parallel = true)
     public Object[][] getData() {
         // TODO Warning
-        Object[][] objects = new Object[][] {
+        return new Object[][] {
                 {webElements.get(0),
                         "To include good practices\n" +
                                 "and ideas from successful\n" +
@@ -44,7 +43,6 @@ public class TextBelowPicturesTest {
                                 "wish to get more…"
                 }
         };
-        return objects;
     }
 
 
