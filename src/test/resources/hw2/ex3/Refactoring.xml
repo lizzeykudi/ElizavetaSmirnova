@@ -3,7 +3,7 @@
 <suite name="Suite1">
     <test name="Regression1"   >
         <classes>
-            <class name="hw2.ex3.JDITestRefactorWithAnnotation"></class>
+            <class name="hw2.ex3.JDITestRefactorWithAnnotation"/>
         </classes>
     </test>
 </suite>

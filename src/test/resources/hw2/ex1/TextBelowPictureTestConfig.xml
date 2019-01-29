@@ -3,7 +3,7 @@
 <suite name="Suite1" >
     <test name="Regression1"   >
         <classes>
-            <class name="hw2.ex1.TextBelowPicturesTest"></class>
+            <class name="hw2.ex1.TextBelowPicturesTest"/>
         </classes>
     </test>
 </suite>

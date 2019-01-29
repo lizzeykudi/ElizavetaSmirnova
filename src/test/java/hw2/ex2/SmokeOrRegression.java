@@ -11,10 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO I assume that everything working fine, but could you please rename tests classes/methods in according to purpose/groups ?
-// TODO It will be quite easier to figure out what exactly the test methods were execute.
-
-public class Class1 {
+public class SmokeOrRegression {
     @Test(groups = "Smoke")
     public void copy1() {
         WebDriver driver = new ChromeDriver();
@@ -100,7 +97,7 @@ public class Class1 {
         //17 Close Browser
         driver.close();
     }
-    @Test(groups = "Smoke")
+    @Test(groups = "Regression")
     public void copy2() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -185,7 +182,7 @@ public class Class1 {
         //17 Close Browser
         driver.close();
     }
-    @Test(groups = "Smoke")
+    @Test(groups = "Regression")
     public void copy3() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

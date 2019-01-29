@@ -44,7 +44,7 @@ public class JDITest {
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         // TODO Quite weird locator, you should never ever developed stuff like that...
-        webElements = driver.findElements(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > div > div > div > div > span"));
+        webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
         Assert.assertEquals(webElements.stream().filter(WebElement::isDisplayed).collect(Collectors.toList()).size(), 4);
 
@@ -100,6 +100,6 @@ public class JDITest {
         Assert.assertEquals(driver.findElement(By.cssSelector("footer")).isDisplayed(), true);
         // !TODO Warning
         //17 Close Browser
-        driver.close();
+        driver.quit();
     }
 }

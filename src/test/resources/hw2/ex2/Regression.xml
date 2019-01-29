@@ -5,11 +5,11 @@
         <groups>
             <run>
                 <!--TODO Take a look on IDEA warning-->
-                <include name="Regression"></include>
+                <include name="Regression"/>
             </run>
         </groups>
         <packages>
-            <package name="hw2.ex2"></package>
+            <package name="hw2.ex2"/>
         </packages>
     </test>
 </suite>

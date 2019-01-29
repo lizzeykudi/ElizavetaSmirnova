@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Class4 {
-    @Test(groups = {"Smoke", "Regression"})
+public class Regression {
+    @Test(groups = "Regression")
     public void copy1() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -97,7 +97,7 @@ public class Class4 {
         //17 Close Browser
         driver.close();
     }
-    @Test(groups = {"Smoke", "Regression"})
+    @Test(groups = "Regression")
     public void copy2() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -182,7 +182,7 @@ public class Class4 {
         //17 Close Browser
         driver.close();
     }
-    @Test(groups = {"Smoke", "Regression"})
+    @Test(groups = "Regression")
     public void copy3() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
