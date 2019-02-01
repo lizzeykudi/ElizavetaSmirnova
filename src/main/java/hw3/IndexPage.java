@@ -101,8 +101,10 @@ public class IndexPage {
     }
 
     public boolean containsAllInTexts(String[] strings) {
-        return texts.stream().map(WebElement::getText).collect(Collectors.toList())
-                        .containsAll(Arrays.asList(strings));
+        return texts.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList())
+                .containsAll(Arrays.asList(strings));
     }
 
     public String getTextOfCenterTitle() {

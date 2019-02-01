@@ -39,12 +39,10 @@ public class JDITest {
         List<WebElement> webElements = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li > a"));
         Assert.assertEquals(webElements.size(), 4);
         // TODO Pay attention on IDEA warning
-        // TODO I dont see
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                 .containsAll(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS")), true);
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
-        // TODO Quite weird locator, you should never ever developed stuff like that...
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
         Assert.assertEquals(webElements.stream().filter(WebElement::isDisplayed).collect(Collectors.toList()).size(), 4);
@@ -53,8 +51,7 @@ public class JDITest {
 
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
-        // TODO Warning
-        // TODO I dont see
+   
         Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
                         .containsAll(Arrays.asList(
                                 "To include good practices\n" +

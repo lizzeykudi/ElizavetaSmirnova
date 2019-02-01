@@ -6,15 +6,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
+// TODO Code convention, reformat your code via IDEA
+// TODO Basically, you have to follow 'Best Practices' from lecture 4
 public class HW1PageObjectPattern {
     private IndexPage indexPage;
     private WebDriver driver;
     @Test
     public void jdiTest() {
+        // TODO This should not be here, take a look on HW2-3
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         indexPage = PageFactory.initElements(driver, IndexPage.class);
+        // !TODO
 
         //1 Open test site by URI
         indexPage.open();
@@ -33,6 +36,7 @@ public class HW1PageObjectPattern {
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         Assert.assertEquals(indexPage.countOfItems(), 4);
+        // TODO Take a look on IDEA warning
         Assert.assertEquals((indexPage.containsAllInItems(new String[]{"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"})), true);
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
