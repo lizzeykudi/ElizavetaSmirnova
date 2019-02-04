@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IndexPage {
-    private WebDriver driver;
+class IndexPage {
+    private final WebDriver driver;
 
     @FindBy(css = "[id='user-icon']")
     private WebElement userIconField;

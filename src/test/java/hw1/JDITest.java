@@ -39,20 +39,26 @@ public class JDITest {
         List<WebElement> webElements = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li > a"));
         Assert.assertEquals(webElements.size(), 4);
         // TODO Pay attention on IDEA warning
-        Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
-                .containsAll(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS")), true);
+        Assert.assertTrue((webElements.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList()))
+                .containsAll(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS")));
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
-        Assert.assertEquals(webElements.stream().filter(WebElement::isDisplayed).collect(Collectors.toList()).size(), 4);
+        Assert.assertEquals(webElements.stream()
+                .filter(WebElement::isDisplayed)
+                .collect(Collectors.toList()).size(), 4);
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
 
         webElements = driver.findElements(By.cssSelector(".row.clerafix.benefits > div > div > span"));
         Assert.assertEquals(webElements.size(), 4);
    
-        Assert.assertEquals((webElements.stream().map(WebElement::getText).collect(Collectors.toList()))
+        Assert.assertTrue((webElements.stream()
+                        .map(WebElement::getText)
+                        .collect(Collectors.toList()))
                         .containsAll(Arrays.asList(
                                 "To include good practices\n" +
                                         "and ideas from successful\n" +
@@ -66,20 +72,19 @@ public class JDITest {
                                 "Already have good base\n" +
                                         "(about 20 internal and\n" +
                                         "some external projects),\n" +
-                                        "wish to get more…")),
-                true);
+                                        "wish to get more…")));
 
         //9 Assert a text of the main headers
         Assert.assertEquals(driver.findElement(By.cssSelector(".main-title.text-center")).getText(), "EPAM FRAMEWORK WISHES…");
 
-        Assert.assertEquals(driver.findElement(By.cssSelector(".main-txt.text-center")).getText().startsWith("LOREM IPSUM"), true);
+        Assert.assertTrue(driver.findElement(By.cssSelector(".main-txt.text-center")).getText().startsWith("LOREM IPSUM"));
 
         //10 Assert that there is the iframe in the center of page
-        Assert.assertEquals(driver.findElement(By.cssSelector("#iframe")).isDisplayed(), true);
+        Assert.assertTrue(driver.findElement(By.cssSelector("#iframe")).isDisplayed());
 
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
         driver.switchTo().frame("iframe");
-        Assert.assertEquals(driver.findElement(By.cssSelector("#epam_logo")).isDisplayed(), true);
+        Assert.assertTrue(driver.findElement(By.cssSelector("#epam_logo")).isDisplayed());
 
         //12 Switch to original window back
         driver.switchTo().defaultContent();
@@ -96,7 +101,7 @@ public class JDITest {
         Assert.assertEquals(driver.findElement(By.cssSelector(".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")).isDisplayed(), true);
 
         //16 Assert that there is Footer
-        Assert.assertEquals(driver.findElement(By.cssSelector("footer")).isDisplayed(), true);
+        Assert.assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
         // !TODO Warning
         //17 Close Browser
         driver.quit();

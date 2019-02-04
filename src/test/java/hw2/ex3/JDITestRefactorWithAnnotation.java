@@ -1,3 +1,4 @@
+
 package hw2.ex3;
 
 import base.SeleniumBase;
@@ -13,8 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // TODO Code Convention, oh my. Reformat your code via IDEA
-public class JDITestRefactorWithAnnotation extends SeleniumBase{
-    WebDriver driver;
+public class JDITestRefactorWithAnnotation extends SeleniumBase {
+    private WebDriver driver;
 
     @BeforeClass
     public void beforeClass() {
@@ -35,6 +36,7 @@ public class JDITestRefactorWithAnnotation extends SeleniumBase{
     public void afterClass() {
         driver.close();
     }
+
     @Test
     public void jdiTest() {
 
@@ -114,7 +116,6 @@ public class JDITestRefactorWithAnnotation extends SeleniumBase{
 
         //16 Assert that there is Footer
         Assert.assertEquals(driver.findElement(By.cssSelector("footer")).isDisplayed(), true);
-
 
     }
 }

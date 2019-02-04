@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class HW1PageObjectPattern {
     private IndexPage indexPage;
     private WebDriver driver;
+    public static final String TITLE = "Home Page";
     @Test
     public void jdiTest() {
         // TODO This should not be here, take a look on HW2-3
@@ -23,7 +24,7 @@ public class HW1PageObjectPattern {
         indexPage.open();
 
         //2 Assert Browser title
-        Assert.assertEquals(indexPage.getTitle(), "Home Page");
+        Assert.assertEquals(indexPage.getTitle(), TITLE);
 
         //3 Perform login
         indexPage.login("epam", "1234");
