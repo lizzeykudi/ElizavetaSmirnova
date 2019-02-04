@@ -13,6 +13,7 @@ import java.util.List;
 
 public class TextBelowPicturesTest {
     private List<WebElement> webElements;
+    // TODO Pay attention on Code Convention, blank line should be here
     @BeforeClass
     public void beforeClass() {
         WebDriver driver = new ChromeDriver();
@@ -22,7 +23,6 @@ public class TextBelowPicturesTest {
 
     @DataProvider(parallel = true)
     public Object[][] getData() {
-        // TODO Warning
         return new Object[][] {
                 {webElements.get(0),
                         "To include good practices\n" +
