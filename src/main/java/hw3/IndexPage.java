@@ -3,12 +3,15 @@ package hw3;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class IndexPage {
+public class IndexPage {
+    private final String TITLE = "Home Page";
+
     private final WebDriver driver;
 
     @FindBy(css = "[id='user-icon']")
@@ -60,12 +63,78 @@ class IndexPage {
         this.driver = driver;
     }
 
-    public void open() {
-        driver.navigate().to("https://epam.github.io/JDI/");
+    private String getTitle() {
+        return driver.getTitle();
     }
 
-    public String getTitle() {
-        return driver.getTitle();
+    private String getUserNickName() {
+        return userNickName.getText();
+    }
+
+    private int countOfItems() {
+        return items.size();
+    }
+
+    private int countOfImages() {
+        return images.size();
+    }
+
+    private int countOfTexts() {
+        return texts.size();
+    }
+
+    private boolean containsAllInItems(String[] strings) {
+        return items.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList()).containsAll(Arrays.asList(strings));
+    }
+
+    private int countOfDisplayedImages() {
+        return images.stream()
+                .filter(WebElement::isDisplayed)
+                .collect(Collectors.toList()).size();
+    }
+
+    private boolean containsAllInTexts(String[] strings) {
+        return texts.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList()).containsAll(Arrays.asList(strings));
+    }
+
+    private String getTextOfCenterTitle() {
+        return textCenterTitle.getText();
+    }
+
+    private String getTextOfCenterTxt() {
+        return textCenterTxt.getText();
+    }
+
+    private boolean isLeftSectionDisplayed() {
+        return leftSection.isDisplayed();
+    }
+
+    private boolean isIframeDisplayed() {
+        return iFrame.isDisplayed();
+    }
+
+    private boolean isFooterDisplayed() {
+        return footer.isDisplayed();
+    }
+
+    private boolean isEpamLogoDisplayed() {
+        return epamLogo.isDisplayed();
+    }
+
+    private String getAttributeOfSubHeaderText() {
+        return subHeaderText.getAttribute("href");
+    }
+
+    private String getTextOfSubHeaderText() {
+        return subHeaderText.getText();
+    }
+
+    public void open() {
+        driver.navigate().to("https://epam.github.io/JDI/");
     }
 
     public void login(String userName, String userPassword) {
@@ -75,63 +144,67 @@ class IndexPage {
         submitButton.click();
     }
 
-    public String getUserNickName() {
-        return userNickName.getText();
+    public void assertBrowserTitle() {
+        Assert.assertEquals(getTitle(), TITLE);
     }
 
-    public int countOfItems() {
-        return items.size();
+    public void assertUserName(String nick) {
+        Assert.assertEquals(getUserNickName(), nick);
     }
 
-    public int countOfImages() {
-        return images.size();
+    public void assertItemsCount(int itemsCount) {
+        Assert.assertEquals(countOfItems(), itemsCount);
     }
 
-    public int countOfTexts() {
-        return texts.size();
+    public void assertItemsTexts(String[] items) {
+        Assert.assertTrue((containsAllInItems(items)));
     }
 
-    public boolean containsAllInItems(String[] strings) {
-        return items.stream().map(WebElement::getText).collect(Collectors.toList())
-                .containsAll(Arrays.asList(strings));
+    public void asserImagesCount(int imagesCount) {
+        Assert.assertEquals(countOfImages(), imagesCount);
     }
 
-    public int countOfDisplayedImages() {
-        return images.stream().filter(WebElement::isDisplayed).collect(Collectors.toList()).size();
+    public void assertDisplayedImagesCount(int imagesCount) {
+        Assert.assertEquals(countOfDisplayedImages(), imagesCount);
     }
 
-    public boolean containsAllInTexts(String[] strings) {
-        return texts.stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList())
-                .containsAll(Arrays.asList(strings));
+    public void assertTextsUnderIconsCount(int size) {
+        Assert.assertEquals(countOfTexts(), size);
     }
 
-    public String getTextOfCenterTitle() {
-        return textCenterTitle.getText();
+    public void assertTextsUnderIcons(String[] texts) {
+        Assert.assertTrue((containsAllInTexts(texts)));
     }
 
-    public String getTextOfCenterTxt() {
-        return textCenterTxt.getText();
+    public void assertTextOfCenterTitle(String textOfCenterTitle) {
+        Assert.assertEquals(getTextOfCenterTitle(), textOfCenterTitle);
     }
 
-    public boolean isLeftSectionDisplayed() {
-        return leftSection.isDisplayed();
+    public void assertTextOfCenterTxt(String startTextOfCenterTitle) {
+        Assert.assertTrue(getTextOfCenterTxt().startsWith(startTextOfCenterTitle));
     }
 
-    public boolean isFooterDisplayed() {
-        return footer.isDisplayed();
+    public void assertIframeIsDisplayed() {
+        Assert.assertTrue(isIframeDisplayed());
     }
 
-    public boolean isEpamLogoDisplayed() {
-        return epamLogo.isDisplayed();
+    public void assertEpamLogoIsDisplayed() {
+        Assert.assertTrue(isEpamLogoDisplayed());
     }
 
-    public String getAttributeOfSubHeaderText(String attribute) {
-        return subHeaderText.getAttribute(attribute);
+    public void assertTextOfSubHeader(String jdiGithubText) {
+        Assert.assertEquals(getTextOfSubHeaderText(), jdiGithubText);
     }
 
-    public String getTextOfSubHeaderText() {
-        return subHeaderText.getText();
+    public void assertJDIGithubLink(String jdiGithubRef) {
+        Assert.assertEquals(getAttributeOfSubHeaderText(), jdiGithubRef);
+    }
+
+    public void assertLeftSectionIsDisplayed() {
+        Assert.assertTrue(isLeftSectionDisplayed());
+    }
+
+    public void assertFooterIsDisplayed() {
+        Assert.assertTrue(isFooterDisplayed());
     }
 }

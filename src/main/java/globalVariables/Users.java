@@ -1,11 +1,11 @@
-package hw3;
+package globalVariables;
 
 public enum Users {
-    PETER("", "", "");
+    PETER("epam", "1234", "PITER CHAILOVSKII");
 
-    String login;
-    String password;
-    String nick;
+    public String login;
+    public String password;
+    public String nick;
 
     Users(String login, String password, String nick) {
         this.login = login;
