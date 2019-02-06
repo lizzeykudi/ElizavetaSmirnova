@@ -9,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-// TODO Code convention, reformat your code via IDEA
 // TODO Basically, you have to follow 'Best Practices' from lecture 4
-public class HW1PageObjectPattern extends SeleniumBase{
+public class HW1PageObjectPattern extends SeleniumBase {
     private IndexPage indexPage;
     private WebDriver driver;
     public static final String JDI_GITHUB_TEXT = "JDI GITHUB";
@@ -31,9 +30,6 @@ public class HW1PageObjectPattern extends SeleniumBase{
 
     @Test
     public void jdiTest() {
-        // TODO This should not be here, take a look on HW2-3
-        // !TODO
-
         //1 Open test site by URI
         indexPage.open();
 
@@ -51,7 +47,6 @@ public class HW1PageObjectPattern extends SeleniumBase{
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         indexPage.assertItemsCount(Texts.ITEMS.size);
-        // TODO Take a look on IDEA warning
         indexPage.assertItemsTexts(Texts.ITEMS.texts);
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
@@ -60,7 +55,6 @@ public class HW1PageObjectPattern extends SeleniumBase{
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         indexPage.assertTextsUnderIconsCount(Texts.TEXTS.size);
-        // TODO Take a look on IDEA warning
         indexPage.assertTextsUnderIcons(Texts.TEXTS.texts);
 
         //9 Assert a text of the main headers

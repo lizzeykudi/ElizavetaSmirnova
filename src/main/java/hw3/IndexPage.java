@@ -29,12 +29,15 @@ public class IndexPage {
     @FindBy(css = "[id='user-name']")
     private WebElement userNickName;
 
+    // TODO This locator can be improved
     @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 > li > a")
     private List<WebElement> items;
 
+    // TODO This locator can be improved
     @FindBy(css = "body > div > div.uui-main-container > main > div.main-content > div > div > div > div > span")
     private List<WebElement> images;
 
+    // TODO This locator can be improved
     @FindBy(css = ".row.clerafix.benefits > div > div > span")
     private List<WebElement> texts;
 
@@ -53,6 +56,7 @@ public class IndexPage {
     @FindBy(css = ".text-center [href='https://github.com/epam/JDI']")
     private WebElement subHeaderText;
 
+    // TODO This locator can be improved, take a look on html element attributes...
     @FindBy(css = ".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")
     private WebElement leftSection;
 
