@@ -30,15 +30,16 @@ public class IndexPage {
     private WebElement userNickName;
 
     // TODO This locator can be improved
-    @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 > li > a")
+    @FindBy(css = ".m-l8 > li > a")
     private List<WebElement> items;
 
     // TODO This locator can be improved
-    @FindBy(css = "body > div > div.uui-main-container > main > div.main-content > div > div > div > div > span")
+    @FindBy(css = ".benefit-icon")
     private List<WebElement> images;
 
     // TODO This locator can be improved
     @FindBy(css = ".row.clerafix.benefits > div > div > span")
+    @FindBy(css = ".benefit-txt")
     private List<WebElement> texts;
 
     @FindBy(css = ".main-title.text-center")
@@ -57,7 +58,7 @@ public class IndexPage {
     private WebElement subHeaderText;
 
     // TODO This locator can be improved, take a look on html element attributes...
-    @FindBy(css = ".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")
+    @FindBy(css = ".mCS_no_scrollbar")
     private WebElement leftSection;
 
     @FindBy(css = "footer")
