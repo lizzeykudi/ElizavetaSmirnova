@@ -14,7 +14,6 @@ import java.util.List;
 public class TextBelowPicturesTest {
     private List<WebElement> webElements;
 
-    // TODO Pay attention on Code Convention, blank line should be here
     @BeforeClass
     public void beforeClass() {
         WebDriver driver = new ChromeDriver();

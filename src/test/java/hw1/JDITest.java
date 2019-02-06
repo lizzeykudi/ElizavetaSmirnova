@@ -38,7 +38,6 @@ public class JDITest {
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> webElements = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li > a"));
         Assert.assertEquals(webElements.size(), 4);
-        // TODO Pay attention on IDEA warning
         Assert.assertTrue((webElements.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList()))
@@ -98,11 +97,11 @@ public class JDITest {
                 ("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getAttribute("href"), "https://github.com/epam/JDI");
 
         //15 Assert that there is Left Section
-        Assert.assertEquals(driver.findElement(By.cssSelector(".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")).isDisplayed(), true);
+        Assert.assertTrue(driver.findElement(By.cssSelector(".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")).isDisplayed());
 
         //16 Assert that there is Footer
         Assert.assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
-        // !TODO Warning
+
         //17 Close Browser
         driver.quit();
     }

@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO Code Convention, oh my. Reformat your code via IDEA
 public class JDITestRefactorWithAnnotation extends SeleniumBase {
     private WebDriver driver;
 
