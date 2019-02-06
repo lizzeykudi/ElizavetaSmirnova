@@ -38,7 +38,6 @@ public class IndexPage {
     private List<WebElement> images;
 
     // TODO This locator can be improved
-    @FindBy(css = ".row.clerafix.benefits > div > div > span")
     @FindBy(css = ".benefit-txt")
     private List<WebElement> texts;
 
