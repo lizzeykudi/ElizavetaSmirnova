@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-// TODO Basically, you have to follow 'Best Practices' from lecture 4
 public class HW1PageObjectPattern extends SeleniumBase {
     private IndexPage indexPage;
     private WebDriver driver;
