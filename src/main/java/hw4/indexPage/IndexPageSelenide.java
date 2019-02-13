@@ -1,6 +1,7 @@
 package hw4.indexPage;
 
 
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.Arrays;
@@ -14,11 +15,12 @@ public static final String TITLE = "Home Page";
     public static final String URL = "https://epam.github.io/JDI/index.html";
     public static final String RELATIVE_URL = "index.html";
 
-
+    @Step("Assert Browser title")
     public void assertBrowserTitle() {
         Assert.assertEquals(title(), TITLE);
     }
 
+    @Step("Perform login")
     public void login(String login, String password) {
         $("[id='user-icon']").click();
         $("[id='name']").sendKeys(login);
@@ -26,10 +28,12 @@ public static final String TITLE = "Home Page";
         $("[id='login-button']").click();
     }
 
+    @Step("Assert User name in the left-top side of screen that user is loggined")
     public void assertUserName(String nick) {
         $("[id='user-name']").shouldHave(text(nick));
     }
 
+    @Step("Click on \"Service\" subcategory in the header and check that drop down contains options")
     public void assertHeaderServiceContainsOptions(String[] texts) {
         $(".dropdown-toggle").click();
         $$(".dropdown-menu > li > a").containsAll(Arrays.asList(texts));
