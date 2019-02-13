@@ -21,7 +21,7 @@ public class ServicePageInterfaceTest {
         Configuration.startMaximized = true;
     }
 
-    //@Test
+    @Test
     public void jdiTest() {
         //1 Open test site by URL
         indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
@@ -30,6 +30,8 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertBrowserTitle();
 
         //3 Perform login
+        // TODO Basically, it will be better to parametrise the methods by enums instead of strings.
+        // TODO You can pass the whole user in method login(...) nad assertUserName(...)
         indexPageSelenide.login(Users.PETER.login, Users.PETER.password);
 
         //4 Assert User name in the left-top side of screen that user is loggined
@@ -42,6 +44,8 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertLeftServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
 
         //7 Open through the header menu Service -> Different Elements Page
+        // TODO It will be better to split PO initialisation and web page opening,
+        // TODO it is tot make sense open the same page twice.
         indexPageSelenide.openThroughHeader(DifferentElementsPageSelenide.RELATIVE_URL, DifferentElementsPageSelenide.URL);
         differentElementsPage = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
 

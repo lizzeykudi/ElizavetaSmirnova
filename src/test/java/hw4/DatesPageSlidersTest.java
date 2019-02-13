@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
+// TODO Code convention !!
 public class DatesPageSlidersTest {
     IndexPageSelenide indexPageSelenide;
     DatesPageSelenide datesPage;
@@ -64,6 +65,8 @@ public class DatesPageSlidersTest {
         datesPage.setSlider(Slider.FROM, 30);
         datesPage.setSlider(Slider.TO, 70);
 
+        // TODO This wont work, you have to check that log has a message about slider position
+        // TODO and the values are equal to expected (30, 70)
         //13 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.assertLog();
         }
