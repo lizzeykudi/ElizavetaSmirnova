@@ -21,7 +21,7 @@ public class ServicePageInterfaceTest {
         Configuration.startMaximized = true;
     }
 
-    @Test
+    //@Test
     public void jdiTest() {
         //1 Open test site by URL
         indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
