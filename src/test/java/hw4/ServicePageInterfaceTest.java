@@ -16,7 +16,14 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
 
 @Listeners(value = AllureTestListener.class)
+@Feature("Service Page Interface Test")
 public class ServicePageInterfaceTest {
+
+    //Test data
+    String[] checkboxes = new String[]{"Water", "Wind"};
+    String radio = "Selen";
+    String dropdown = "Yellow";
+
     IndexPageSelenide indexPageSelenide;
     DifferentElementsPageSelenide differentElementsPage;
 
@@ -26,8 +33,7 @@ public class ServicePageInterfaceTest {
         Configuration.startMaximized = true;
     }
 
-    @Story("Service Page Interface Test")
-    @Feature("Select`s work")
+    @Story("Select`s work test")
     @Test(groups = "HW5")
     public void jdiTest() {
         //1 Open test site by URL
@@ -62,28 +68,28 @@ public class ServicePageInterfaceTest {
         differentElementsPage.assertLeftSectionIsDisplayed();
 
         //11 Select checkboxes
-        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"});
+        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, checkboxes);
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.CHECKBOXES);
 
         //13 Select radio
-        differentElementsPage.select(ElementsOnDifferentElementsPage.RADIOS,  new String[]{"Selen"});
+        differentElementsPage.select(ElementsOnDifferentElementsPage.RADIOS, radio);
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.RADIOS);
 
         //15 Select in dropdown
-        differentElementsPage.select(ElementsOnDifferentElementsPage.DROPDOWN, new String[]{"Yellow"});
+        differentElementsPage.select(ElementsOnDifferentElementsPage.DROPDOWN, dropdown);
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the select value
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.DROPDOWN);
 
         //17 Unselect and assert checkboxes
-        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"}, false);
+        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, checkboxes, false);
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        differentElementsPage.assertLogUnselected(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"});
+        differentElementsPage.assertLogUnselected(ElementsOnDifferentElementsPage.CHECKBOXES, checkboxes);
 
     }
 }

@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.open;
 
 @Listeners(value = AllureTestListener.class)
+@Feature("Dates page sliders test")
 public class DatesPageSlidersTest {
     IndexPageSelenide indexPageSelenide;
     DatesPageSelenide datesPage;
@@ -26,8 +27,7 @@ public class DatesPageSlidersTest {
         Configuration.startMaximized = true;
     }
 
-    @Story("Dates Page Sliders Test")
-    @Feature("Sliders`s work")
+    @Story("Slider`s work Test")
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";

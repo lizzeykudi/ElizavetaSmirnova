@@ -43,7 +43,7 @@ public class DifferentElementsPageSelenide {
     }
 
     @Step("Select")
-    public void select(ElementsOnDifferentElementsPage element, String[] strings) {
+    public void select(ElementsOnDifferentElementsPage element, String... strings) {
         String cssSelector = element == ElementsOnDifferentElementsPage.DROPDOWN ? element.cssSelector + " > option" : element.cssSelector;
         $$(cssSelector).stream()
                 .filter(selenideElement -> Arrays.asList(strings).contains(selenideElement.text()))

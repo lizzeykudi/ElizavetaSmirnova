@@ -52,14 +52,14 @@
                     <suiteXmlFiles>src/test/resources/hw5/testng.xml</suiteXmlFiles>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.7.3/aspectjweaver-1.7.3.jar"
+                        -noverify -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.7.3/aspectjweaver-1.7.3.jar"
                     </argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>1.7.3</version>
+                        <version>1.8.3</version>
                     </dependency>
                 </dependencies>
             </plugin>
