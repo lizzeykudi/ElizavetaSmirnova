@@ -1,5 +1,4 @@
-package hw4;
-
+package hw5;
 import com.codeborne.selenide.Configuration;
 import hw4.differentElementPage.ElementsOnDifferentElementsPage;
 import globalVariables.Texts;
@@ -16,7 +15,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
 
 @Listeners(value = AllureTestListener.class)
-public class ServicePageInterfaceTest {
+public class ServicePageInterfaceTestUnwork {
     IndexPageSelenide indexPageSelenide;
     DifferentElementsPageSelenide differentElementsPage;
 
@@ -26,8 +25,8 @@ public class ServicePageInterfaceTest {
         Configuration.startMaximized = true;
     }
 
-    @Story("Service Page Interface Test")
-    @Feature("Select`s work")
+    @Story("Service Page Interface Test Unwork")
+    @Feature("Unwork test")
     @Test(groups = "HW5")
     public void jdiTest() {
         //1 Open test site by URL

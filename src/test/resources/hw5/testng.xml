@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="HW5" parallel="methods" thread-count="3">
+    <test name="HW5" >
+        <groups>
+            <run>
+                <include name="HW5"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="hw4"/>
+            <package name="hw5"/>
+        </packages>
+    </test>
+</suite>

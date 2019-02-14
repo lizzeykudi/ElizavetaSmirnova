@@ -6,11 +6,16 @@ import hw4.datesPage.DatesPageSelenide;
 import hw4.datesPage.slider.Direction;
 import hw4.datesPage.slider.Slider;
 import hw4.indexPage.IndexPageSelenide;
+import hw5.listeners.AllureTestListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Listeners(value = AllureTestListener.class)
 public class DatesPageSlidersTest {
     IndexPageSelenide indexPageSelenide;
     DatesPageSelenide datesPage;
@@ -21,8 +26,11 @@ public class DatesPageSlidersTest {
         Configuration.startMaximized = true;
     }
 
-    @Test
+    @Story("Dates Page Sliders Test")
+    @Feature("Sliders`s work")
+    @Test(groups = "HW5")
     public void jdiTest() {
+        Configuration.browser = "CHROME";
         //1 Open test site by URL
         indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
 
