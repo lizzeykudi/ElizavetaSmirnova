@@ -36,6 +36,7 @@ public class ServicePageInterfaceTestUnwork {
     @Story("Wrong nick name")
     @Test(groups = "HW5")
     public void jdiTest() {
+        Configuration.browser = "CHROME";
         //1 Open test site by URL
         indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
 
