@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+// TODO The same comments like DifferentElementsPageSelenide
+// TODO Basically, this PO should have only 2 public methods:
+// TODO setSliderRange(int, int)
+// TODO checkLog(...)
 public class DatesPageSelenide {
     public final static String TITLE = "Dates";
     public final static String URL = "https://epam.github.io/JDI/dates.html";

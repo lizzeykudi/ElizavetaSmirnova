@@ -15,6 +15,11 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+// TODO Code convention !
+// TODO Basically, this is not a PO
+// TODO You have to specify all page element as fields here, use @FindBy annotation
+// TODO You should not find elements in PO methods(actions)
+// TODO Page actions should be named with reference to it purpose, business value
 public class DifferentElementsPageSelenide{
     public final static String TITLE = "Different Elements";
     public final static String URL = "https://epam.github.io/JDI/different-elements.html";
