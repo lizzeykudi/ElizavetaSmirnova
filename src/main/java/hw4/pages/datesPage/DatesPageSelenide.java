@@ -1,14 +1,13 @@
-package hw4.datesPage;
+package hw4.pages.datesPage;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.impl.WebElementsCollection;
-import hw4.datesPage.slider.Direction;
-import hw4.datesPage.slider.Slider;
-import hw5.listeners.AllureTestListener;
+import hw4.conditions.Conditions;
+import hw4.pages.datesPage.slider.Direction;
+import hw4.pages.datesPage.slider.Slider;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Listeners;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -56,27 +55,7 @@ public class DatesPageSelenide {
         for (Slider slider : Slider.values()) {
             expectedLog.add(String.format(slider.logStatus, $(slider.cssSelector + " span").getText()));
         }
-        $$(".logs > li").shouldHave(containsTexts(expectedLog));
+        $$(".logs > li").shouldHave(Conditions.containsTexts(expectedLog));
         }
-
-    private static CollectionCondition containsTexts(List<String> substrings) {
-        return new CollectionCondition() {
-            @Override
-            public void fail(WebElementsCollection webElementsCollection, List<WebElement> list, Exception e, long l) {
-                System.out.println("Actual: " + list.stream()
-                        .map(webElement -> webElement.getText().substring(8))
-                        .collect(Collectors.toList()));
-                System.out.println("Expected:" + substrings);
-                throw new RuntimeException("fail");
-            }
-
-            @Override
-            public boolean apply(@Nullable List<WebElement> webElements) {
-                return webElements.stream()
-                        .map(webElement -> webElement.getText().substring(9))
-                        .collect(Collectors.toList()).containsAll(substrings);
-            }
-        };
-    }
 
 }

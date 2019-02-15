@@ -1,18 +1,16 @@
 package hw5;
 import com.codeborne.selenide.Configuration;
-import hw4.differentElementPage.ElementsOnDifferentElementsPage;
+import hw4.pages.differentElementPage.ElementsOnDifferentElementsPage;
 import globalVariables.Texts;
 import globalVariables.Users;
-import hw4.differentElementPage.DifferentElementsPageSelenide;
-import hw4.indexPage.IndexPageSelenide;
+import hw4.pages.differentElementPage.DifferentElementsPageSelenide;
+import hw4.pages.indexPage.IndexPageSelenide;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import static com.codeborne.selenide.Selenide.*;
 
 @Listeners(value = AllureTestListener.class)
 @Feature("Service Page Interface Test")

@@ -1,13 +1,11 @@
-package hw4.differentElementPage;
+package hw4.pages.differentElementPage;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.impl.WebElementsCollection;
-import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Listeners;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

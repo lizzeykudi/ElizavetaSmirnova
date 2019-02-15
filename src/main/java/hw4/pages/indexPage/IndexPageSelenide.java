@@ -1,10 +1,9 @@
-package hw4.indexPage;
+package hw4.pages.indexPage;
 
 
-import hw5.listeners.AllureTestListener;
+import globalVariables.Users;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 
 import java.util.Arrays;
 
@@ -24,16 +23,16 @@ public static final String TITLE = "Home Page";
     }
 
     @Step("Perform login")
-    public void login(String login, String password) {
+    public void login(Users user) {
         $("[id='user-icon']").click();
-        $("[id='name']").sendKeys(login);
-        $("[id='password']").sendKeys(password);
+        $("[id='name']").sendKeys(user.login);
+        $("[id='password']").sendKeys(user.password);
         $("[id='login-button']").click();
     }
 
     @Step("Assert User name in the left-top side of screen that user is loggined")
-    public void assertUserName(String nick) {
-        $("[id='user-name']").shouldHave(text(nick));
+    public void assertUserName(Users user) {
+        $("[id='user-name']").shouldHave(text(user.nick));
     }
 
     @Step("Click on \"Service\" subcategory in the header and check that drop down contains options")

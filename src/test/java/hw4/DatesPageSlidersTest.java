@@ -2,10 +2,10 @@ package hw4;
 
 import com.codeborne.selenide.Configuration;
 import globalVariables.Users;
-import hw4.datesPage.DatesPageSelenide;
-import hw4.datesPage.slider.Direction;
-import hw4.datesPage.slider.Slider;
-import hw4.indexPage.IndexPageSelenide;
+import hw4.pages.datesPage.DatesPageSelenide;
+import hw4.pages.datesPage.slider.Direction;
+import hw4.pages.datesPage.slider.Slider;
+import hw4.pages.indexPage.IndexPageSelenide;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;

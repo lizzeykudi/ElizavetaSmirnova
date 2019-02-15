@@ -1,4 +1,4 @@
-package hw4.datesPage.slider;
+package hw4.pages.datesPage.slider;
 
 public enum Direction {
     LEFT(".sidebar-menu", "0"),
