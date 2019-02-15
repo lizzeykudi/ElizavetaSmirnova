@@ -1,4 +1,4 @@
-package hw4.pages.differentElementPage;
+package hw4.differentElementPage;
 
 public enum ElementsOnDifferentElementsPage {
     CHECKBOXES(4, ".label-checkbox", " input", "%s: condition changed to true", "%s: condition changed to false"),
