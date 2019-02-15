@@ -5,15 +5,14 @@ import globalVariables.Users;
 import hw4.pages.datesPage.DatesPageSelenide;
 import hw4.pages.datesPage.slider.Direction;
 import hw4.pages.datesPage.slider.Slider;
-import hw4.pages.indexPage.IndexPageSelenide;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+// TODO Code convention !!
 
-import static com.codeborne.selenide.Selenide.open;
 
 @Listeners(value = AllureTestListener.class)
 @Feature("Dates page sliders test")
@@ -64,9 +63,10 @@ public class DatesPageSlidersTest {
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
         datesPage.setSlider(Slider.TO, Direction.RIGHT);
         datesPage.setSlider(Slider.FROM, Direction.RIGHT);
-
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.assertLog();
+        // TODO This wont work, you have to check that log has a message about slider position
+        // TODO and the values are equal to expected (30, 70)
 
         //12 Using drag-and-drop set Range sliders.
         datesPage.setSlider(Slider.FROM, 30);
