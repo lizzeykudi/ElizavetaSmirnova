@@ -5,7 +5,7 @@ import com.codeborne.selenide.Configuration;
 import globalVariables.Texts;
 import globalVariables.Users;
 
-import hw4.pages.indexPage.IndexPageSelenide;
+import hw4.pages.indexPage.IndexPage;
 import hw4.pages.differentElementPage.*;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
@@ -14,7 +14,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -28,14 +27,15 @@ public class ServicePageInterfaceTest {
     String radio = "Selen";
     String dropdown = "Yellow";
 
-    IndexPageSelenide indexPageSelenide;
-    DifferentElementsPageSelenide differentElementsPage;
+    IndexPage indexPageSelenide;
+    DifferentElementsPage differentElementsPage;
 
     @BeforeTest
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
     }
+
     @Story("Select`s work test")
     // TODO Basically, it will be better to parametrise the methods by enums instead of strings.
     // TODO You can pass the whole user in method login(...) nad assertUserName(...)
@@ -43,7 +43,7 @@ public class ServicePageInterfaceTest {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         //1 Open test site by URL
-        indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
+        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -63,8 +63,8 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertLeftServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
 
         //7 Open through the header menu Service -> Different Elements Page
-        indexPageSelenide.openThroughHeader(DifferentElementsPageSelenide.RELATIVE_URL, DifferentElementsPageSelenide.URL);
-        differentElementsPage = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
+        indexPageSelenide.openThroughHeader(DifferentElementsPage.RELATIVE_URL, DifferentElementsPage.URL);
+        differentElementsPage = open(DifferentElementsPage.URL, DifferentElementsPage.class);
 
         //8 Check interface on Different elements page, it contains all needed elements
         differentElementsPage.checkInterfaceOnDifferentElementsPage();

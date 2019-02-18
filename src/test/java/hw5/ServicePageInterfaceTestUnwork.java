@@ -1,10 +1,11 @@
 package hw5;
+
 import com.codeborne.selenide.Configuration;
 import hw4.pages.differentElementPage.DifferentElements;
 import globalVariables.Texts;
 import globalVariables.Users;
-import hw4.pages.differentElementPage.DifferentElementsPageSelenide;
-import hw4.pages.indexPage.IndexPageSelenide;
+import hw4.pages.differentElementPage.DifferentElementsPage;
+import hw4.pages.indexPage.IndexPage;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -13,6 +14,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -21,13 +23,13 @@ import static com.codeborne.selenide.Selenide.open;
 public class ServicePageInterfaceTestUnwork {
 
     //Test data
-    String wrongNickName = "lol";
+    String wrongText = "lol";
     String[] checkboxes = new String[]{"Water", "Wind"};
     String radio = "Selen";
     String dropdown = "Yellow";
 
-    IndexPageSelenide indexPageSelenide;
-    DifferentElementsPageSelenide differentElementsPage;
+    IndexPage indexPageSelenide;
+    DifferentElementsPage differentElementsPage;
 
     @BeforeTest
     public void beforeTest() {
@@ -40,7 +42,7 @@ public class ServicePageInterfaceTestUnwork {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         //1 Open test site by URL
-        indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
+        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -55,11 +57,11 @@ public class ServicePageInterfaceTestUnwork {
         indexPageSelenide.assertHeaderServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
 
         //6 Click on Service subcategory in the left section and check that drop down contains options
-        indexPageSelenide.assertLeftServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
+        indexPageSelenide.assertLeftServiceContainsOptions(Collections.singletonList(wrongText));
 
         //7 Open through the header menu Service -> Different Elements Page
-        indexPageSelenide.openThroughHeader(DifferentElementsPageSelenide.RELATIVE_URL, DifferentElementsPageSelenide.URL);
-        differentElementsPage = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
+        indexPageSelenide.openThroughHeader(DifferentElementsPage.RELATIVE_URL, DifferentElementsPage.URL);
+        differentElementsPage = open(DifferentElementsPage.URL, DifferentElementsPage.class);
 
         //8 Check interface on Different elements page, it contains all needed elements
         differentElementsPage.checkInterfaceOnDifferentElementsPage();

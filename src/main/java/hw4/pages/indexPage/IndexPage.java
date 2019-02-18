@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 
-public class IndexPageSelenide {
+public class IndexPage {
     public static final String TITLE = "Home Page";
     public static final String URL = "https://epam.github.io/JDI/index.html";
     public static final String RELATIVE_URL = "index.html";

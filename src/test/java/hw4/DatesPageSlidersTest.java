@@ -5,7 +5,7 @@ import globalVariables.Users;
 import hw4.pages.datesPage.*;
 import hw4.pages.datesPage.slider.Direction;
 import hw4.pages.datesPage.slider.Slider;
-import hw4.pages.indexPage.IndexPageSelenide;
+import hw4.pages.indexPage.IndexPage;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,8 +20,8 @@ import static com.codeborne.selenide.Selenide.open;
 @Listeners(value = AllureTestListener.class)
 @Feature("Dates page sliders test")
 public class DatesPageSlidersTest {
-    IndexPageSelenide indexPageSelenide;
-    DatesPageSelenide datesPage;
+    IndexPage indexPageSelenide;
+    DatesPage datesPage;
 
     @BeforeTest
     public void beforeTest() {
@@ -34,7 +34,7 @@ public class DatesPageSlidersTest {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         //1 Open test site by URL
-        indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
+        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -46,36 +46,37 @@ public class DatesPageSlidersTest {
         indexPageSelenide.assertUserName(Users.PETER);
 
         //5 Open through the header menu Service -> Dates Page
-        indexPageSelenide.openThroughHeader(DatesPageSelenide.RELATIVE_URL, DatesPageSelenide.URL);
-        datesPage = open(DatesPageSelenide.URL, DatesPageSelenide.class);
+        indexPageSelenide.openThroughHeader(DatesPage.RELATIVE_URL, DatesPage.URL);
+        datesPage = open(DatesPage.URL, DatesPage.class);
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        datesPage.setSlider(Slider.FROM, Direction.LEFT);
-        datesPage.setSlider(Slider.TO, Direction.RIGHT);
+        datesPage.setSliderRange(Slider.FROM, Direction.LEFT);
+        datesPage.setSliderRange(Slider.TO, Direction.RIGHT);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.assertLog();
+        datesPage.checkLog();
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-        datesPage.setSlider(Slider.FROM, Direction.LEFT);
-        datesPage.setSlider(Slider.TO, Direction.LEFT);
+        datesPage.setSliderRange(Slider.FROM, Direction.LEFT);
+        datesPage.setSliderRange(Slider.TO, Direction.LEFT);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.assertLog();
+        datesPage.checkLog();
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
-        datesPage.setSlider(Slider.TO, Direction.RIGHT);
-        datesPage.setSlider(Slider.FROM, Direction.RIGHT);
+        datesPage.setSliderRange(Slider.TO, Direction.RIGHT);
+        datesPage.setSliderRange(Slider.FROM, Direction.RIGHT);
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.assertLog();
+        datesPage.checkLog();
         // TODO This wont work, you have to check that log has a message about slider position
         // TODO and the values are equal to expected (30, 70)
 
         //12 Using drag-and-drop set Range sliders.
-        datesPage.setSlider(Slider.FROM, 30);
-        datesPage.setSlider(Slider.TO, 70);
+        datesPage.setSliderRange(Slider.FROM, 30);
+        datesPage.setSliderRange(Slider.TO, 70);
 
         //13 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.assertLog();
-        }
+        datesPage.checkLog(Slider.FROM, 30);
+        datesPage.checkLog(Slider.TO, 70);
+    }
 }

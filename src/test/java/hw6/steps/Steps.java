@@ -8,9 +8,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import globalVariables.Users;
-import hw4.pages.differentElementPage.DifferentElementsPageSelenide;
+import hw4.pages.differentElementPage.DifferentElementsPage;
 import hw4.pages.differentElementPage.DifferentElements;
-import hw4.pages.indexPage.IndexPageSelenide;
+import hw4.pages.indexPage.IndexPage;
 import hw6.UserTablePage;
 
 import java.util.Collections;
@@ -20,13 +20,13 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 
 public class Steps {
-    IndexPageSelenide indexPageSelenide;
-    DifferentElementsPageSelenide differentElementsPageSelenide;
+    IndexPage indexPageSelenide;
+    DifferentElementsPage differentElementsPageSelenide;
     UserTablePage userTablePage;
 
     @Given("^I am on \"Home Page\"$")
     public void iOpenEpamJdiPage() {
-        indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
+        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
     }
 
     @Then("Browser title '([^\"]*)'$")
@@ -91,7 +91,7 @@ public class Steps {
 
     @Given("^I open Different Elements Page$")
     public void iOpenDifferentElementsPage() {
-        differentElementsPageSelenide = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
+        differentElementsPageSelenide = open(DifferentElementsPage.URL, DifferentElementsPage.class);
     }
 
     @Then("^Page contains (\\d+) checkboxes, (\\d+) radios, (\\d+) dropdown, (\\d+) buttons$")

@@ -17,7 +17,7 @@ import static hw4.conditions.Conditions.containsLog;
 // TODO You should not find elements in PO methods(actions)
 // TODO Page actions should be named with reference to it purpose, business value
 
-public class DifferentElementsPageSelenide {
+public class DifferentElementsPage {
     public final static String TITLE = "Different Elements";
     public final static String URL = "https://epam.github.io/JDI/different-elements.html";
     public static final String RELATIVE_URL = "different-elements.html";
