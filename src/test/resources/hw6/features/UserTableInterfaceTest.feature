@@ -8,11 +8,11 @@ Feature: UserTableInterface
   When I click on "Service" button in Header
   And I click on "User Table" button in Service dropdown
   Then "USER_TABLE" page is opened
-  And 6 "NumberType" Dropdowns are displayed on Users Table on User Table Page
+  And 6 "NumberType Dropdowns" are displayed on Users Table on User Table Page
   And 6 "User names" are displayed on Users Table on User Table Page
-  And 6 Description images are displayed on Users Table on User Table Page
-  And 6 Description texts under images are displayed on Users Table on User Table Page
-  And 6 checkboxes are displayed on Users Table on User Table Page
+  And 6 "Description images" are displayed on Users Table on User Table Page
+  And 6 "Description texts under images" are displayed on Users Table on User Table Page
+  And 6 "checkboxes" are displayed on Users Table on User Table Page
 
   And User table contains following values:
   | Number         | User              | Description                        |
@@ -27,7 +27,7 @@ Feature: UserTableInterface
   Then 1 log row has "Vip: condition changed to true" text in log section
 
   When I click on dropdown in column Type for user "Roman"
-  Then droplist contains values
+  Then droplist  for user "PETER" contains values
   | Admin                       |
   | User                          |
   | Manager                  |

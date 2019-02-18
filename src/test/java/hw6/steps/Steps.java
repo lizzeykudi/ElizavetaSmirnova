@@ -9,14 +9,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import globalVariables.Users;
 import hw4.pages.differentElementPage.DifferentElementsPageSelenide;
+import hw4.pages.differentElementPage.DifferentElements;
 import hw4.pages.indexPage.IndexPageSelenide;
-import hw6.UserTable;
 import hw6.UserTablePage;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
@@ -51,18 +49,48 @@ public class Steps {
         indexPageSelenide.contains(countPictures, countTextsUnderItem, countText);
     }
 
+    @When("^I select checkboxes (.*)$")
+    public void i_select_checkboxes(List<String> select) {
+        differentElementsPageSelenide.selectCheckboxes(true, select);
+    }
+
+    @When("^I select radio \"([^\"]*)\"$")
+    public void i_select_radio(String select) {
+        differentElementsPageSelenide.selectRadio(true, select);
+    }
+
+    @When("^I select dropdown \"([^\"]*)\"$")
+    public void i_select_dropdown(String select) {
+        differentElementsPageSelenide.selectDropdown(true, select);
+    }
+
+    @When("^I unselect checkboxes (.*)$")
+    public void i_unselect_checkboxes(List<String> texts) {
+        differentElementsPageSelenide.selectCheckboxes(false, texts);
+    }
+
+    @Then("^there is log for \"([^\"]*)\"$")
+    public void there_is_log_for(DifferentElements element) {
+        differentElementsPageSelenide.assertLog(element);
+    }
+
+    @Then("^there is log unselect for \"([^\"]*)\" (.*)$")
+    public void there_is_log_unselect_for(DifferentElements element, List<String> texts) {
+        differentElementsPageSelenide.assertLogUnselected(element, texts);
+    }
+
     @Then("Click on \"Service\" subcategory in the header and check that drop down contains (.*)$")
-    public void ClickOnSer(List<String> list) {
+    public void ClickOnService(List<String> list) {
         indexPageSelenide.assertHeaderServiceContainsOptions(list);
     }
 
     @Then("Click on \"Service\" subcategory in the left section and check that drop down contains (.*)$")
-    public void ClickOnService(List<String> list) {
+    public void ClickOnServiceLeft(List<String> list) {
         indexPageSelenide.assertLeftServiceContainsOptions(list);
     }
 
     @Given("^I open Different Elements Page$")
-    public void iOpenDiff() {
+    public void iOpenDifferentElementsPage() {
         differentElementsPageSelenide = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
     }
 
@@ -72,12 +100,12 @@ public class Steps {
     }
 
     @Then("^there is right Section$")
-    public void rightSectio() {
+    public void rightSection() {
         differentElementsPageSelenide.assertRightSectionIsDisplayed();
     }
 
     @Then("^there is left Section$")
-    public void leftSectio() {
+    public void leftSection() {
         differentElementsPageSelenide.assertLeftSectionIsDisplayed();
     }
 
@@ -89,7 +117,7 @@ public class Steps {
     @When("^I click on \"User Table\" button in Service dropdown$")
     public void clickUserTable() {
         indexPageSelenide.clickUserTable();
-        userTablePage = open(PagesMetaInfo.USER_TABLE.url, UserTablePage.class);
+        userTablePage = open("https://epam.github.io/JDI/user-table.html", UserTablePage.class);
     }
 
     @Then("^\"([^\"]*)\" page is opened$")
@@ -97,36 +125,14 @@ public class Steps {
         CommonActions.pageIsOpened(title(), page);
     }
 
-    @Then("^(\\d+) \"([^\"]*)\" Dropdowns are displayed on Users Table on User Table Page$")
-    public void numbertype_Dropdowns_are_displayed_on_Users_Table_on_User_Table_Page(int numberType, String string) {
+    @Then("^(\\d+) \"([^\"]*)\" are displayed on Users Table on User Table Page$")
+    public void el_are_displayed_on_Users_Table_on_User_Table_Page(int numberType, String string) {
         userTablePage.checkCountTableElements(string, numberType);
     }
 
-    @Then("^(\\d+) \"([^\"]*)\" are displayed on Users Table on User Table Page$")
-    public void user_names_are_displayed_on_Users_Table_on_User_Table_Page(int userNames) throws Throwable {
-        //userTablePage.checkCountUserNames(userNames);
-    }
-
-    @Then("^(\\d+) Description images are displayed on Users Table on User Table Page$")
-    public void description_images_are_displayed_on_Users_Table_on_User_Table_Page(int arg1) throws Throwable {
-
-    }
-
-    @Then("^(\\d+) checkboxes are displayed on Users Table on User Table Page$")
-    public void checkboxes_are_displayed_on_Users_Table_on_User_Table_Page(int arg1) throws Throwable {
-
-    }
-
-
-
-    @Then("^(\\d+) Description texts under images are displayed on Users Table on User Table Page$")
-    public void description_texts_under_images_are_displayed_on_Users_Table_on_User_Table_Page(int arg1) throws Throwable {
-
-    }
 
     @Then("^User table contains following values:$")
     public void user_table_contains_following_values(@Transpose DataTable arg) {
-        List<List<String>> table = arg.asLists(String.class);
         userTablePage.checkUserTable(arg.asLists(String.class));
     }
 
@@ -145,8 +151,8 @@ public class Steps {
         userTablePage.clickDropdown(name);
     }
 
-    @Then("^droplist contains values$")
-    public void droplist_contains_values(List<String> strings) {
-        userTablePage.dropdownContains(strings);
+    @Then("^droplist for user \"([^\"]*)\" contains values$")
+    public void droplist_contains_values(String name, List<String> strings) {
+        userTablePage.dropdownContains(strings, name);
     }
 }

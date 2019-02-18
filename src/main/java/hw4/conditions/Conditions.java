@@ -36,6 +36,7 @@ public class Conditions {
                 System.out.println("Actual: " + list.stream()
                         .map(webElement -> webElement.getText().toUpperCase())
                         .collect(Collectors.toList()));
+
                 System.out.println("Expected:" + substrings);
                 throw new RuntimeException("fail");
             }

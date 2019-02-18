@@ -36,10 +36,21 @@ public class UserTablePage {
     @FindBy(css = "#user-table tr td:nth-child(1)")
     private ElementsCollection numbers;
 
-    Map<String, ElementsCollection> tableElements = new HashMap<>();
-    Map<String, UserTable> userTable = new HashMap<>();
-    {tableElements.put("numberTypes", numberTypes);
-    //tableElements.put("User names", userNames);
+    Map<String, ElementsCollection> tableElements;
+    Map<String, UserTable> userTable;
+
+
+    private void getTableElements() {
+        tableElements = new HashMap<>();
+        tableElements.put("NumberType Dropdowns", numberTypes);
+        tableElements.put("User names", userNames);
+        tableElements.put("Description images", descriptionImages);
+        tableElements.put("Description texts under images", descriptionTextsUnderImages);
+        tableElements.put("checkboxes", checkboxes);
+    }
+
+    private void  getUserTable() {
+        userTable = new HashMap<>();
         Iterator<SelenideElement> iterator = table.iterator();
         iterator.next();
         while (iterator.hasNext()) {
@@ -47,11 +58,10 @@ public class UserTablePage {
             String name = next.find(" td [href]").text();
             userTable.put(name, new UserTable(name, next));
         }
-
     }
 
-
     public void checkCountTableElements(String element, int count) {
+        if (tableElements==null) {getTableElements();}
         tableElements.get(element).shouldHaveSize(count);
     }
 
@@ -72,10 +82,12 @@ public class UserTablePage {
     }
 
     public void clickDropdown(String name) {
+        if (userTable==null) {getUserTable();}
         userTable.get(name).getDropdown().click();
     }
 
-    public void dropdownContains(List<String> strings) {
-
+    public void dropdownContains(List<String> strings, String name) {
+        if (userTable==null) {getUserTable();}
+        userTable.get(name).getPossibleTypes().shouldHave(CollectionCondition.exactTexts(strings));
     }
 }
