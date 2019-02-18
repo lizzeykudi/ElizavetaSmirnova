@@ -1,4 +1,4 @@
-package hw4.datesPage.slider;
+package hw4.pages.datesPage.slider;
 
 public enum Slider {
     FROM(".ui-state-default.ui-corner-all:nth-child(1)", "Range 2(From):%s link clicked"),

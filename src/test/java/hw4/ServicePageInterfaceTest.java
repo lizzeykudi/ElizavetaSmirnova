@@ -1,17 +1,30 @@
 package hw4;
 
 import com.codeborne.selenide.Configuration;
-import hw4.differentElementPage.ElementsOnDifferentElementsPage;
+
 import globalVariables.Texts;
 import globalVariables.Users;
-import hw4.differentElementPage.DifferentElementsPageSelenide;
-import hw4.indexPage.IndexPageSelenide;
+
+import hw4.pages.indexPage.IndexPageSelenide;
+import hw4.pages.differentElementPage.*;
+import hw5.listeners.AllureTestListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
+@Listeners(value = AllureTestListener.class)
+@Feature("Service Page Interface Test")
 public class ServicePageInterfaceTest {
+
+    //Test data
+    String[] checkboxes = new String[]{"Water", "Wind"};
+    String radio = "Selen";
+    String dropdown = "Yellow";
+
     IndexPageSelenide indexPageSelenide;
     DifferentElementsPageSelenide differentElementsPage;
 
@@ -20,9 +33,12 @@ public class ServicePageInterfaceTest {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
     }
-
-    @Test
+    @Story("Select`s work test")
+    // TODO Basically, it will be better to parametrise the methods by enums instead of strings.
+    // TODO You can pass the whole user in method login(...) nad assertUserName(...)
+    @Test(groups = "HW5")
     public void jdiTest() {
+        Configuration.browser = "CHROME";
         //1 Open test site by URL
         indexPageSelenide = open(IndexPageSelenide.URL, IndexPageSelenide.class);
 
@@ -30,12 +46,12 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertBrowserTitle();
 
         //3 Perform login
-        // TODO Basically, it will be better to parametrise the methods by enums instead of strings.
-        // TODO You can pass the whole user in method login(...) nad assertUserName(...)
-        indexPageSelenide.login(Users.PETER.login, Users.PETER.password);
+        indexPageSelenide.login(Users.PETER);
 
+        // TODO It will be better to split PO initialisation and web page opening,
+        // TODO it is tot make sense open the same page twice.
         //4 Assert User name in the left-top side of screen that user is loggined
-        indexPageSelenide.assertUserName(Users.PETER.nick);
+        indexPageSelenide.assertUserName(Users.PETER);
 
         //5 Click on "Service" subcategory in the header and check that drop down contains options
         indexPageSelenide.assertHeaderServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
@@ -44,8 +60,6 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertLeftServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
 
         //7 Open through the header menu Service -> Different Elements Page
-        // TODO It will be better to split PO initialisation and web page opening,
-        // TODO it is tot make sense open the same page twice.
         indexPageSelenide.openThroughHeader(DifferentElementsPageSelenide.RELATIVE_URL, DifferentElementsPageSelenide.URL);
         differentElementsPage = open(DifferentElementsPageSelenide.URL, DifferentElementsPageSelenide.class);
 
@@ -59,28 +73,28 @@ public class ServicePageInterfaceTest {
         differentElementsPage.assertLeftSectionIsDisplayed();
 
         //11 Select checkboxes
-        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"});
+        differentElementsPage.selectCheckboxes(true, checkboxes);
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.CHECKBOXES);
 
         //13 Select radio
-        differentElementsPage.select(ElementsOnDifferentElementsPage.RADIOS,  new String[]{"Selen"});
+        differentElementsPage.selectRadio(true, radio);
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.RADIOS);
 
         //15 Select in dropdown
-        differentElementsPage.select(ElementsOnDifferentElementsPage.DROPDOWN, new String[]{"Yellow"});
+        differentElementsPage.selectDropdown(true, dropdown);
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the select value
         differentElementsPage.assertLog(ElementsOnDifferentElementsPage.DROPDOWN);
 
         //17 Unselect and assert checkboxes
-        differentElementsPage.select(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"}, false);
+        differentElementsPage.selectCheckboxes(false, checkboxes);
 
-        //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        differentElementsPage.assertLogUnselected(ElementsOnDifferentElementsPage.CHECKBOXES, new String[]{"Water", "Wind"});
+        //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        differentElementsPage.assertLogUnselected(ElementsOnDifferentElementsPage.CHECKBOXES, checkboxes);
 
     }
 }

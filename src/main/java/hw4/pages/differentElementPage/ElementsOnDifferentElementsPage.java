@@ -1,9 +1,9 @@
-package hw4.differentElementPage;
+package hw4.pages.differentElementPage;
 
 public enum ElementsOnDifferentElementsPage {
     CHECKBOXES(4, ".label-checkbox", " input", "%s: condition changed to true", "%s: condition changed to false"),
     RADIOS(4, ".label-radio", " input", "metal: value changed to %s", ""),
-    DROPDOWN(1, ".colors .uui-form-element", " option", "Colors: value changed to %s", ""),
+    DROPDOWN(1, ".colors .uui-form-element", " ", "Colors: value changed to %s", ""),
     BUTTONS(2, ".main-content-hg .uui-button", "", "", "");
 
     public int expectedCount;
