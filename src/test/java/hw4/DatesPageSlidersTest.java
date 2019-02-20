@@ -29,6 +29,7 @@ public class DatesPageSlidersTest {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.browserSize = "1366x768";
     }
 
     @Story("Slider`s work Test")

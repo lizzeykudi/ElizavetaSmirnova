@@ -7,9 +7,10 @@
                 <include name="HW5"/>
             </run>
         </groups>
-        <packages>
-            <package name="hw4"/>
-            <package name="hw5"/>
-        </packages>
+        <classes>
+            <class name="hw4.ServicePageInterfaceTest"/>
+            <class name="hw4.DatesPageSlidersTest"/>
+            <class name="hw5.ServicePageInterfaceTestUnwork"/>
+        </classes>
     </test>
 </suite>

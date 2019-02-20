@@ -36,6 +36,7 @@ public class ServicePageInterfaceTest {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.browserSize = "1366x768";
     }
 
     @Story("Select`s work test")

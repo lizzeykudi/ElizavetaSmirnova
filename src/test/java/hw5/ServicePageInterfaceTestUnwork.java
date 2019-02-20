@@ -37,6 +37,7 @@ public class ServicePageInterfaceTestUnwork {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.browserSize = "1366x768";
     }
 
     @Story("Wrong nick name")
@@ -44,6 +45,7 @@ public class ServicePageInterfaceTestUnwork {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.browserSize = "1366x768";
         //1 Open test site by URL
         indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 
