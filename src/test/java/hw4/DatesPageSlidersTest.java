@@ -10,11 +10,14 @@ import hw4.pages.indexPage.IndexPage;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 // TODO Code convention !!
 
 
@@ -37,8 +40,10 @@ public class DatesPageSlidersTest {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        indexPageSelenide = page(IndexPage.class);
+        datesPage = page(DatesPage.class);
         //1 Open test site by URL
-        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
+        open(PagesMetaInfo.HOME.url);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -51,7 +56,6 @@ public class DatesPageSlidersTest {
 
         //5 Open through the header menu Service -> Dates Page
         indexPageSelenide.openThroughHeader(DatesPage.RELATIVE_URL, DatesPage.URL);
-        datesPage = open(DatesPage.URL, DatesPage.class);
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         datesPage.setSliderRange(Slider.FROM, Direction.LEFT);

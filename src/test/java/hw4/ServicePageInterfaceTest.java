@@ -6,6 +6,7 @@ import com.codeborne.selenide.Configuration;
 import globalVariables.Texts;
 import globalVariables.Users;
 
+import hw4.pages.datesPage.DatesPage;
 import hw4.pages.indexPage.IndexPage;
 import hw4.pages.differentElementPage.*;
 import hw5.listeners.AllureTestListener;
@@ -18,6 +19,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
 
 @Listeners(value = AllureTestListener.class)
 @Feature("Service Page Interface Test")
@@ -46,8 +48,10 @@ public class ServicePageInterfaceTest {
     public void jdiTest() {
         Configuration.browser = "CHROME";
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        indexPageSelenide = page(IndexPage.class);
+        differentElementsPage = page(DifferentElementsPage.class);
         //1 Open test site by URL
-        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
+        open(PagesMetaInfo.HOME.url);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -68,7 +72,6 @@ public class ServicePageInterfaceTest {
 
         //7 Open through the header menu Service -> Different Elements Page
         indexPageSelenide.openThroughHeader(DifferentElementsPage.RELATIVE_URL, DifferentElementsPage.URL);
-        differentElementsPage = open(DifferentElementsPage.URL, DifferentElementsPage.class);
 
         //8 Check interface on Different elements page, it contains all needed elements
         differentElementsPage.checkInterfaceOnDifferentElementsPage();

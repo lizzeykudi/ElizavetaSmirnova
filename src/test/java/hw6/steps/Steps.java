@@ -16,17 +16,16 @@ import hw6.UserTablePage;
 import java.util.Collections;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Steps {
-    IndexPage indexPageSelenide;
-    DifferentElementsPage differentElementsPageSelenide;
-    UserTablePage userTablePage;
+    IndexPage indexPageSelenide = page(IndexPage.class);
+    DifferentElementsPage differentElementsPageSelenide = page(DifferentElementsPage.class);
+    UserTablePage userTablePage = page(UserTablePage.class);
 
     @Given("^I am on \"Home Page\"$")
     public void iOpenEpamJdiPage() {
-        indexPageSelenide = open(IndexPage.URL, IndexPage.class);
+        open(PagesMetaInfo.HOME.url);
     }
 
     @Then("Browser title '([^\"]*)'$")
@@ -91,7 +90,7 @@ public class Steps {
 
     @Given("^I open Different Elements Page$")
     public void iOpenDifferentElementsPage() {
-        differentElementsPageSelenide = open(DifferentElementsPage.URL, DifferentElementsPage.class);
+        open(PagesMetaInfo.DIFFERENT_ELEMENTS.url);
     }
 
     @Then("^Page contains (\\d+) checkboxes, (\\d+) radios, (\\d+) dropdown, (\\d+) buttons$")
@@ -117,7 +116,6 @@ public class Steps {
     @When("^I click on \"User Table\" button in Service dropdown$")
     public void clickUserTable() {
         indexPageSelenide.clickUserTable();
-        userTablePage = open("https://epam.github.io/JDI/user-table.html", UserTablePage.class);
     }
 
     @Then("^\"([^\"]*)\" page is opened$")
