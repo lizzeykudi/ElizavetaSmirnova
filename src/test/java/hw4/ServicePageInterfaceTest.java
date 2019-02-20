@@ -1,5 +1,6 @@
 package hw4;
 
+import JDI.PagesMetaInfo;
 import com.codeborne.selenide.Configuration;
 
 import globalVariables.Texts;
@@ -34,6 +35,7 @@ public class ServicePageInterfaceTest {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
     }
 
     @Story("Select`s work test")
@@ -42,6 +44,7 @@ public class ServicePageInterfaceTest {
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
         //1 Open test site by URL
         indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 

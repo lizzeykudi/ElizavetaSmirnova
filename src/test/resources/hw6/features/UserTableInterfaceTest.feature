@@ -27,7 +27,7 @@ Feature: UserTableInterface
   Then 1 log row has "Vip: condition changed to true" text in log section
 
   When I click on dropdown in column Type for user "Roman"
-  Then droplist  for user "PETER" contains values
+  Then droplist for user "Roman" contains values
   | Admin                       |
   | User                          |
   | Manager                  |

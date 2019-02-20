@@ -1,5 +1,6 @@
 package hw4;
 
+import JDI.PagesMetaInfo;
 import com.codeborne.selenide.Configuration;
 import globalVariables.Users;
 import hw4.pages.datesPage.*;
@@ -27,12 +28,14 @@ public class DatesPageSlidersTest {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
     }
 
     @Story("Slider`s work Test")
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
         //1 Open test site by URL
         indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 

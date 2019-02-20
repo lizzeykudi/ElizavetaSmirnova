@@ -1,5 +1,6 @@
 package hw5;
 
+import JDI.PagesMetaInfo;
 import com.codeborne.selenide.Configuration;
 import hw4.pages.differentElementPage.DifferentElements;
 import globalVariables.Texts;
@@ -35,12 +36,14 @@ public class ServicePageInterfaceTestUnwork {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
     }
 
     @Story("Wrong nick name")
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";
+        Configuration.baseUrl = PagesMetaInfo.HOME.url;
         //1 Open test site by URL
         indexPageSelenide = open(IndexPage.URL, IndexPage.class);
 
