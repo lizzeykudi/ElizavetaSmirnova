@@ -11,11 +11,6 @@ import java.util.stream.Collectors;
 
 //import static com.codeborne.selenide.Selenide.$$;
 import static hw4.conditions.Conditions.containsLog;
-// TODO Code convention !
-// TODO Basically, this is not a PO
-// TODO You have to specify all page element as fields here, use @FindBy annotation
-// TODO You should not find elements in PO methods(actions)
-// TODO Page actions should be named with reference to it purpose, business value
 
 public class DifferentElementsPage {
     public final static String TITLE = "Different Elements";
@@ -139,6 +134,7 @@ public class DifferentElementsPage {
         log.shouldHave(containsLog(expected));
     }
 
+    // TODO Method 'Get...' should return smth.
     private void getMap() {
         map = new HashMap<>();
         map.put(DifferentElements.CHECKBOXES, checkboxes);

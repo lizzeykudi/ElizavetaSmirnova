@@ -35,13 +35,20 @@ public class DatesPageSlidersTest {
         Configuration.browserSize = "1366x768";
     }
 
+    // TODO This test wont work for me
+    // Actual: [Range 2(To):70 link clicked, Range 2(From):28 link clicked, Range 2(From):100 link clicked, Range 2(To):100 link clicked, Range 2(To):0 link clicked, Range 2(From):0 link clicked, Range 2(To):100 link clicked, Range 2(From):0 link clicked]
+    // Expected:[Range 2(From):30 link clicked]
+
     @Story("Slider`s work Test")
     @Test(groups = "HW5")
     public void jdiTest() {
+        // TODO This configurations calls should not be here
         Configuration.browser = "CHROME";
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
         indexPageSelenide = page(IndexPage.class);
         datesPage = page(DatesPage.class);
+        // !TODO
+
         //1 Open test site by URL
         open(PagesMetaInfo.HOME.url);
 
