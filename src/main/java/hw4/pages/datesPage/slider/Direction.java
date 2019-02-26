@@ -1,4 +1,4 @@
-package hw4.pages.datesPage.slider;
+/*package hw4.pages.datesPage.slider;
 
 // TODO This is not the best approach to store locators in enum
 public enum Direction {
@@ -12,4 +12,4 @@ public enum Direction {
         this.cssSelector = cssSelector;
         this.number = number;
     }
-}
+}*/

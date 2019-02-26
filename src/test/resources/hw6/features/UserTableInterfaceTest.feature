@@ -3,7 +3,7 @@ Feature: UserTableInterface
   Scenario: User Table Page test
 
 
-    Given I am on "Home Page"
+    Given I am on "Home"
     And I login as user "PETER"
     When I click on "Service" button in Header
     And I click on "User Table" button in Service dropdown

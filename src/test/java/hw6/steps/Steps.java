@@ -23,9 +23,9 @@ public class Steps {
     DifferentElementsPage differentElementsPageSelenide = page(DifferentElementsPage.class);
     UserTablePage userTablePage = page(UserTablePage.class);
 
-    @Given("^I am on \"Home Page\"$")
-    public void iOpenEpamJdiPage() {
-        open(PagesMetaInfo.HOME.url);
+    @Given("^I am on \"([^\"]*)\"$")
+    public void iOpen(PagesMetaInfo page) {
+        open(page.url);
     }
 
     @Then("Browser title '([^\"]*)'$")
@@ -78,12 +78,12 @@ public class Steps {
         differentElementsPageSelenide.assertLogUnselected(element, texts);
     }
 
-    @Then("Click on \"Service\" subcategory in the header and check that drop down contains (.*)$")
+    @Then("Click on \"Service\" subcategory in the header and check that drop down contains values$")
     public void ClickOnService(List<String> list) {
         indexPageSelenide.assertHeaderServiceContainsOptions(list);
     }
 
-    @Then("Click on \"Service\" subcategory in the left section and check that drop down contains (.*)$")
+    @Then("Click on \"Service\" subcategory in the left section and check that drop down contains values$")
     public void ClickOnServiceLeft(List<String> list) {
         indexPageSelenide.assertLeftServiceContainsOptions(list);
     }

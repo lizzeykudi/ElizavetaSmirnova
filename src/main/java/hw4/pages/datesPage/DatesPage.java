@@ -3,7 +3,6 @@ package hw4.pages.datesPage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import hw4.conditions.Conditions;
-import hw4.pages.datesPage.slider.Direction;
 import hw4.pages.datesPage.slider.Slider;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
@@ -32,6 +31,12 @@ public class DatesPage {
     @FindBy(css = ".logs > li")
     private ElementsCollection log;
 
+    @FindBy(css = ".sidebar-menu")
+    private SelenideElement left;
+
+    @FindBy(css = "[name='log-sidebar']")
+    private SelenideElement right;
+
     Map<Slider, SelenideElement> sliders;
 
     private void initSliders() {
@@ -40,27 +45,23 @@ public class DatesPage {
         sliders.put(Slider.TO, toSlider);
     }
 
-    @Step("Using drag-and-drop set Range sliders")
-    public void setSliderRange(Slider slider, Direction direction) {
-        if (sliders == null) {
-            initSliders();
-        }
-        sliders.get(slider).dragAndDropTo(direction.cssSelector);
-    }
 
     @Step("Using drag-and-drop set Range sliders")
     public void setSliderRange(Slider slider, int position) {
-        if (position == 100) {
-            setSliderRange(slider, Direction.RIGHT);
-        }
-        if (position == 0) {
-            setSliderRange(slider, Direction.LEFT);
-        }
+
         if (sliders == null) {
             initSliders();
         }
+
+        if (position == 100) {
+            sliders.get(slider).dragAndDropTo(right);
+            return;
+        }
+        if (position == 0) {
+            sliders.get(slider).dragAndDropTo(left);
+            return;
+        }
         SelenideElement sliderSelenideElement = sliders.get(slider);
-        //int currentPos = Integer.parseInt($(slider.cssSelector + " span").text());
         int currentPos = Integer.parseInt(sliderSelenideElement.find(" span").text());
         int shift = currentPos - position;
         if (shift > 0) {
@@ -79,7 +80,7 @@ public class DatesPage {
     }
 
 
-    @Step("Assert that for \"From\" and \"To\" sliders there are logs rows with corresponding values")
+  /*  @Step("Assert that for \"From\" and \"To\" sliders there are logs rows with corresponding values")
     public void checkLog() {
         if (sliders == null) {
             initSliders();
@@ -92,7 +93,7 @@ public class DatesPage {
             expectedLog.add(String.format(slider.logStatus, sliderSelenideElement.find(" span").text()));
         }
         log.shouldHave(Conditions.containsLog(expectedLog));
-    }
+    }*/
 
     public void checkLog(Slider slider, int position) {
         if (sliders == null) {

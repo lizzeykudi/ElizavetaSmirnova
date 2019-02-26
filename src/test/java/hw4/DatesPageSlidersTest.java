@@ -4,13 +4,11 @@ import JDI.PagesMetaInfo;
 import com.codeborne.selenide.Configuration;
 import globalVariables.Users;
 import hw4.pages.datesPage.*;
-import hw4.pages.datesPage.slider.Direction;
 import hw4.pages.datesPage.slider.Slider;
 import hw4.pages.indexPage.IndexPage;
 import hw5.listeners.AllureTestListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -32,7 +30,10 @@ public class DatesPageSlidersTest {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
-        Configuration.browserSize = "1366x768";
+
+        indexPageSelenide = page(IndexPage.class);
+        datesPage = page(DatesPage.class);
+        //Configuration.browserSize = "1366x768";
     }
 
     // TODO This test wont work for me
@@ -43,10 +44,10 @@ public class DatesPageSlidersTest {
     @Test(groups = "HW5")
     public void jdiTest() {
         // TODO This configurations calls should not be here
-        Configuration.browser = "CHROME";
+        /*Configuration.browser = "CHROME";
         Configuration.baseUrl = PagesMetaInfo.HOME.url;
         indexPageSelenide = page(IndexPage.class);
-        datesPage = page(DatesPage.class);
+        datesPage = page(DatesPage.class);*/
         // !TODO
 
         //1 Open test site by URL
@@ -65,24 +66,27 @@ public class DatesPageSlidersTest {
         indexPageSelenide.openThroughHeader(DatesPage.RELATIVE_URL, DatesPage.URL);
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        datesPage.setSliderRange(Slider.FROM, Direction.LEFT);
-        datesPage.setSliderRange(Slider.TO, Direction.RIGHT);
+        datesPage.setSliderRange(Slider.FROM, 0);
+        datesPage.setSliderRange(Slider.TO, 100);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkLog();
+        datesPage.checkLog(Slider.FROM, 0);
+        datesPage.checkLog(Slider.TO, 100);
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-        datesPage.setSliderRange(Slider.FROM, Direction.LEFT);
-        datesPage.setSliderRange(Slider.TO, Direction.LEFT);
+        datesPage.setSliderRange(Slider.FROM, 0);
+        datesPage.setSliderRange(Slider.TO, 0);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkLog();
+        datesPage.checkLog(Slider.FROM, 0);
+        datesPage.checkLog(Slider.TO, 0);
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
-        datesPage.setSliderRange(Slider.TO, Direction.RIGHT);
-        datesPage.setSliderRange(Slider.FROM, Direction.RIGHT);
+        datesPage.setSliderRange(Slider.TO, 100);
+        datesPage.setSliderRange(Slider.FROM, 100);
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkLog();
+        datesPage.checkLog(Slider.TO, 100);
+        datesPage.checkLog(Slider.FROM, 100);
         // TODO This wont work, you have to check that log has a message about slider position
         // TODO and the values are equal to expected (30, 70)
 

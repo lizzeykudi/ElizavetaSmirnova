@@ -12,12 +12,12 @@
 	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:123)
 	-->
 
-    <test name="Test">
+    <test name="UserTableInterfaceTest">
         <classes>
             <class name="hw6.RunUserTableInterfaceTest"/>
         </classes>
     </test>
-    <test name="Test" annotations="JDK" preserve-order="true">
+    <test name="RunServiceTest" annotations="JDK" preserve-order="true">
         <classes>
             <class name="hw6.RunServicePageInterfaceTest"/>
         </classes>
