@@ -1,5 +1,5 @@
 package hw7.jdi.entites;
 
 public enum Vegetables {
-    Cucumber, Tomato
+    Cucumber, Tomato, Vegetables, Onion
 }

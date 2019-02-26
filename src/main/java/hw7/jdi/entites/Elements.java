@@ -1,5 +1,5 @@
 package hw7.jdi.entites;
 
 public enum Elements {
-    Water, Fire
+    Water, Fire, Earth, Wind
 }

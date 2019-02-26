@@ -1,5 +1,5 @@
 package hw7.jdi.entites;
 
 public enum Metal {
-    Selen
+    Selen, Gold, Silver, Bronze
 }
