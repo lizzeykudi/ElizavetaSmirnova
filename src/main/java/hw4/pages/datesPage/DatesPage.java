@@ -65,7 +65,7 @@ public class DatesPage {
         int currentPos = Integer.parseInt(sliderSelenideElement.find(" span").text());
         int shift = currentPos - position;
         if (shift > 0) {
-            for (int i = 0; i < shift + 3; i++) {
+            for (int i = 0; i < shift; i++) {
                 sliderSelenideElement.sendKeys(Keys.ARROW_LEFT);
             }
         } else {
