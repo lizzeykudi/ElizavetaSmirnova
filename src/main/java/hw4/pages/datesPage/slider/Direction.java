@@ -1,5 +1,6 @@
 package hw4.pages.datesPage.slider;
 
+// TODO This is not the best approach to store locators in enum
 public enum Direction {
     LEFT(".sidebar-menu", "0"),
     RIGHT("[name='log-sidebar']", "100");

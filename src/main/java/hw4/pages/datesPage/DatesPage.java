@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO The same comments like DifferentElementsPage
 // TODO Basically, this PO should have only 2 public methods:
 // TODO setSliderRange(int, int)
 // TODO checkLog(...)
@@ -87,6 +86,8 @@ public class DatesPage {
         }
         ArrayList<String> expectedLog = new ArrayList<>();
         for (Slider slider : Slider.values()) {
+            // TODO This is NOT an expected values, this is values from the page.
+            // TODO Basically, you have to parametrise this method..
             SelenideElement sliderSelenideElement = sliders.get(slider);
             expectedLog.add(String.format(slider.logStatus, sliderSelenideElement.find(" span").text()));
         }
