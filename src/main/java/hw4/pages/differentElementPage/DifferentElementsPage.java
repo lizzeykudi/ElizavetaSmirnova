@@ -134,7 +134,7 @@ public class DifferentElementsPage {
         log.shouldHave(containsLog(expected));
     }
 
-    // TODO Method 'Get...' should return smth.
+    // TODO Method 'Get...' should return smth. x2
     private void getMap() {
         map = new HashMap<>();
         map.put(DifferentElements.CHECKBOXES, checkboxes);

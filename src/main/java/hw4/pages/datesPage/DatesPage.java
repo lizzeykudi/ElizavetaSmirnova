@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO Basically, this PO should have only 2 public methods:
-// TODO setSliderRange(int, int)
-// TODO checkLog(...)
-
 public class DatesPage {
     public final static String TITLE = "Dates";
     public final static String URL = "https://epam.github.io/JDI/dates.html";
@@ -78,22 +74,6 @@ public class DatesPage {
         }
         sliderSelenideElement.dragAndDropTo(sliderSelenideElement);
     }
-
-
-  /*  @Step("Assert that for \"From\" and \"To\" sliders there are logs rows with corresponding values")
-    public void checkLog() {
-        if (sliders == null) {
-            initSliders();
-        }
-        ArrayList<String> expectedLog = new ArrayList<>();
-        for (Slider slider : Slider.values()) {
-            // TODO This is NOT an expected values, this is values from the page.
-            // TODO Basically, you have to parametrise this method..
-            SelenideElement sliderSelenideElement = sliders.get(slider);
-            expectedLog.add(String.format(slider.logStatus, sliderSelenideElement.find(" span").text()));
-        }
-        log.shouldHave(Conditions.containsLog(expectedLog));
-    }*/
 
     public void checkLog(Slider slider, int position) {
         if (sliders == null) {

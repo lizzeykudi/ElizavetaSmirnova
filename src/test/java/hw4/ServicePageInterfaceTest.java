@@ -42,8 +42,6 @@ public class ServicePageInterfaceTest {
     }
 
     @Story("Select`s work test")
-    // TODO Basically, it will be better to parametrise the methods by enums instead of strings.
-    // TODO You can pass the whole user in method login(...) nad assertUserName(...)
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";
@@ -59,8 +57,6 @@ public class ServicePageInterfaceTest {
         //3 Perform login
         indexPageSelenide.login(Users.PETER);
 
-        // TODO It will be better to split PO initialisation and web page opening,
-        // TODO it is tot make sense open the same page twice.
         //4 Assert User name in the left-top side of screen that user is loggined
         indexPageSelenide.assertUserName(Users.PETER);
 
