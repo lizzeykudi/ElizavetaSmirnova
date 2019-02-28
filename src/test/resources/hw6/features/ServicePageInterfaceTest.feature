@@ -2,31 +2,30 @@ Feature: ServicePafeInterface
 
   Scenario: Login verification
 
+    # TODO on 'home' PAGE, I assume...
     Given I am on "Home"
     Then Browser title 'Home Page'
     When I login as user "PETER"
     Then User name should be 'PETER'
     Then Home Page contains 4 pictures, 4 texts under them, 2 texts above
-    # TODO This 2 steps should be reformatted, take a look on second scenario for example !
     Then Click on "Service" subcategory in the header and check that drop down contains values
-          | SUPPORT   |
-          | DATES    |
-          | COMPLEX TABLE |
-          | SIMPLE TABLE |
-          | USER TABLE |
-          | TABLE WITH PAGES |
-          | DIFFERENT ELEMENTS |
-          | PERFORMANCE |
+      | SUPPORT            |
+      | DATES              |
+      | COMPLEX TABLE      |
+      | SIMPLE TABLE       |
+      | USER TABLE         |
+      | TABLE WITH PAGES   |
+      | DIFFERENT ELEMENTS |
+      | PERFORMANCE        |
     Then Click on "Service" subcategory in the left section and check that drop down contains values
-              | SUPPORT   |
-              | DATES    |
-              | COMPLEX TABLE |
-              | SIMPLE TABLE |
-              | USER TABLE |
-              | TABLE WITH PAGES |
-              | DIFFERENT ELEMENTS |
-              | PERFORMANCE |
-    # TODO This method will be better with parameter
+      | SUPPORT            |
+      | DATES              |
+      | COMPLEX TABLE      |
+      | SIMPLE TABLE       |
+      | USER TABLE         |
+      | TABLE WITH PAGES   |
+      | DIFFERENT ELEMENTS |
+      | PERFORMANCE        |
     Given I am on "Different_Elements"
     Then Page contains 4 checkboxes, 4 radios, 1 dropdown, 2 buttons
     Then there is right Section

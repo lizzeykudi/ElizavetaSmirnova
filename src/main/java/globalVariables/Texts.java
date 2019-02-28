@@ -16,7 +16,7 @@ public enum Texts {
                     "(about 20 internal and\n" +
                     "some external projects),\n" +
                     "wish to get more…"}),
-    // TODO You can create different enum with this items
+    // TODO You can create different enum with this items x2
     SERVICE_TEXTS(new String[]{"SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "USER TABLE", "TABLE WITH PAGES", "DIFFERENT ELEMENTS", "PERFORMANCE"});
     public String[] texts;
     public int size;

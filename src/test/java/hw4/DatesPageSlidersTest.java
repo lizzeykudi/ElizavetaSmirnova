@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-// TODO Code convention !!
-
 
 @Listeners(value = AllureTestListener.class)
 @Feature("Dates page sliders test")
@@ -36,20 +34,13 @@ public class DatesPageSlidersTest {
         //Configuration.browserSize = "1366x768";
     }
 
-    // TODO This test wont work for me
+    // TODO This test wont work for me x2
     // Actual: [Range 2(To):70 link clicked, Range 2(From):28 link clicked, Range 2(From):100 link clicked, Range 2(To):100 link clicked, Range 2(To):0 link clicked, Range 2(From):0 link clicked, Range 2(To):100 link clicked, Range 2(From):0 link clicked]
     // Expected:[Range 2(From):30 link clicked]
 
     @Story("Slider`s work Test")
     @Test(groups = "HW5")
     public void jdiTest() {
-        // TODO This configurations calls should not be here
-        /*Configuration.browser = "CHROME";
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
-        indexPageSelenide = page(IndexPage.class);
-        datesPage = page(DatesPage.class);*/
-        // !TODO
-
         //1 Open test site by URL
         open(PagesMetaInfo.HOME.url);
 
@@ -87,8 +78,6 @@ public class DatesPageSlidersTest {
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkLog(Slider.TO, 100);
         datesPage.checkLog(Slider.FROM, 100);
-        // TODO This wont work, you have to check that log has a message about slider position
-        // TODO and the values are equal to expected (30, 70)
 
         //12 Using drag-and-drop set Range sliders.
         datesPage.setSliderRange(Slider.FROM, 30);

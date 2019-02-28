@@ -25,6 +25,7 @@ public class Steps {
 
     @Given("^I am on \"([^\"]*)\"$")
     public void iOpen(PagesMetaInfo page) {
+        // TODO Basically yes, you can open page directly by URL, but in this particular case, you have to use menu.
         open(page.url);
     }
 
