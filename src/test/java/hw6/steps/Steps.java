@@ -1,7 +1,8 @@
 package hw6.steps;
 
 import JDI.CommonActions;
-import JDI.PagesMetaInfo;
+import JDI.pagesInfo.MainPages;
+import JDI.pagesInfo.ServiceMenuPages;
 import cucumber.api.DataTable;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
@@ -23,8 +24,8 @@ public class Steps {
     DifferentElementsPage differentElementsPageSelenide = page(DifferentElementsPage.class);
     UserTablePage userTablePage = page(UserTablePage.class);
 
-    @Given("^I am on \"([^\"]*)\"$")
-    public void iOpen(PagesMetaInfo page) {
+    @Given("^I am on \"([^\"]*)\" page$")
+    public void iOpen(MainPages page) {
         // TODO Basically yes, you can open page directly by URL, but in this particular case, you have to use menu.
         open(page.url);
     }
@@ -91,7 +92,7 @@ public class Steps {
 
     @Given("^I open Different Elements Page$")
     public void iOpenDifferentElementsPage() {
-        open(PagesMetaInfo.DIFFERENT_ELEMENTS.url);
+        open(MainPages.DIFFERENT_ELEMENTS.url);
     }
 
     @Then("^Page contains (\\d+) checkboxes, (\\d+) radios, (\\d+) dropdown, (\\d+) buttons$")
@@ -120,7 +121,7 @@ public class Steps {
     }
 
     @Then("^\"([^\"]*)\" page is opened$")
-    public void pageIsOpened(PagesMetaInfo page) {
+    public void pageIsOpened(MainPages page) {
         CommonActions.pageIsOpened(title(), page);
     }
 
@@ -153,6 +154,11 @@ public class Steps {
     @Then("^droplist for user \"([^\"]*)\" contains values$")
     public void droplist_contains_values(String name, List<String> strings) {
         userTablePage.dropdownContains(strings, name);
+    }
+
+    @Given("^I am on \"([^\"]*)\" through header menu$")
+    public void i_am_on_through_header_menu(ServiceMenuPages page){
+       indexPageSelenide.openThroughHeader(page);
     }
 
 }

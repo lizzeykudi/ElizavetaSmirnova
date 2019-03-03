@@ -1,12 +1,12 @@
 package hw4;
 
-import JDI.PagesMetaInfo;
+import JDI.pagesInfo.MainPages;
+import JDI.pagesInfo.ServiceMenuPages;
 import com.codeborne.selenide.Configuration;
 
 import globalVariables.Texts;
 import globalVariables.Users;
 
-import hw4.pages.datesPage.DatesPage;
 import hw4.pages.indexPage.IndexPage;
 import hw4.pages.differentElementPage.*;
 import hw5.listeners.AllureTestListener;
@@ -37,19 +37,22 @@ public class ServicePageInterfaceTest {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
-        Configuration.browserSize = "1366x768";
+        Configuration.baseUrl = MainPages.HOME.url;
+        //Configuration.browserSize = "1366x768";
+
+
     }
 
     @Story("Select`s work test")
     @Test(groups = "HW5")
     public void jdiTest() {
-        Configuration.browser = "CHROME";
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
+       /* Configuration.browser = "CHROME";
+        Configuration.baseUrl = MainPages.HOME.url;*/
         indexPageSelenide = page(IndexPage.class);
         differentElementsPage = page(DifferentElementsPage.class);
+
         //1 Open test site by URL
-        open(PagesMetaInfo.HOME.url);
+        open(MainPages.HOME.url);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();
@@ -61,10 +64,10 @@ public class ServicePageInterfaceTest {
         indexPageSelenide.assertUserName(Users.PETER);
 
         //5 Click on "Service" subcategory in the header and check that drop down contains options
-        indexPageSelenide.assertHeaderServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
+        indexPageSelenide.assertHeaderServiceContainsOptions(ServiceMenuPages.getValues());
 
         //6 Click on Service subcategory in the left section and check that drop down contains options
-        indexPageSelenide.assertLeftServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
+        indexPageSelenide.assertLeftServiceContainsOptions(ServiceMenuPages.getValues());
 
         //7 Open through the header menu Service -> Different Elements Page
         indexPageSelenide.openThroughHeader(DifferentElementsPage.RELATIVE_URL, DifferentElementsPage.URL);

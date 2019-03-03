@@ -1,6 +1,7 @@
 package hw4.pages.indexPage;
 
 
+import JDI.pagesInfo.ServiceMenuPages;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -108,6 +109,13 @@ public class IndexPage {
         clickServiceOnHeader();
         $(".dropdown-menu [href='"+relativeURL+"']").click();
         Assert.assertEquals(url(), url);
+    }
+
+    @Step("Open through the header menu Service -> Different Elements Page")
+    public void openThroughHeader(ServiceMenuPages openedPage) {
+        clickServiceOnHeader();
+        $(".dropdown-menu [href='"+openedPage.relativeUrl+"']").click();
+        Assert.assertEquals(url(), openedPage.url);
     }
 
     public void contains(int countPictures, int countTextsUnderItem, int countText) {

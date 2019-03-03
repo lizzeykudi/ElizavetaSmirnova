@@ -1,6 +1,6 @@
 package hw4;
 
-import JDI.PagesMetaInfo;
+import JDI.pagesInfo.MainPages;
 import com.codeborne.selenide.Configuration;
 import globalVariables.Users;
 import hw4.pages.datesPage.*;
@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(value = AllureTestListener.class)
 @Feature("Dates page sliders test")
@@ -27,10 +26,9 @@ public class DatesPageSlidersTest {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.baseUrl = MainPages.HOME.url;
 
-        indexPageSelenide = page(IndexPage.class);
-        datesPage = page(DatesPage.class);
+
         //Configuration.browserSize = "1366x768";
     }
 
@@ -41,8 +39,10 @@ public class DatesPageSlidersTest {
     @Story("Slider`s work Test")
     @Test(groups = "HW5")
     public void jdiTest() {
+        indexPageSelenide = page(IndexPage.class);
+        datesPage = page(DatesPage.class);
         //1 Open test site by URL
-        open(PagesMetaInfo.HOME.url);
+        open(MainPages.HOME.url);
 
         //2 Assert Browser title
         indexPageSelenide.assertBrowserTitle();

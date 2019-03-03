@@ -6,7 +6,9 @@ import hw4.conditions.Conditions;
 import hw4.pages.datesPage.slider.Slider;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +35,11 @@ public class DatesPage {
     @FindBy(css = "[name='log-sidebar']")
     private SelenideElement right;
 
+    @FindBy(css = ".uui-slider")
+    private SelenideElement sliderLength;
+
     Map<Slider, SelenideElement> sliders;
+
 
     private void initSliders() {
         sliders = new HashMap<>();
@@ -48,8 +54,7 @@ public class DatesPage {
         if (sliders == null) {
             initSliders();
         }
-
-        if (position == 100) {
+       if (position == 100) {
             sliders.get(slider).dragAndDropTo(right);
             return;
         }
@@ -60,6 +65,7 @@ public class DatesPage {
         SelenideElement sliderSelenideElement = sliders.get(slider);
         int currentPos = Integer.parseInt(sliderSelenideElement.find(" span").text());
         int shift = currentPos - position;
+
         if (shift > 0) {
             for (int i = 0; i < shift; i++) {
                 sliderSelenideElement.sendKeys(Keys.ARROW_LEFT);
@@ -68,12 +74,27 @@ public class DatesPage {
             for (int i = 0; i < Math.abs(shift); i++) {
                 sliderSelenideElement.sendKeys(Keys.ARROW_RIGHT);
             }
-            for (int i = 0; i < 3; i++) {
-                sliderSelenideElement.sendKeys(Keys.ARROW_LEFT);
-            }
         }
-        sliderSelenideElement.dragAndDropTo(sliderSelenideElement);
+        sliderSelenideElement.click();
+
     }
+
+
+    // it definitely works
+   /* @Step("Using drag-and-drop set Range sliders")
+    public void setSliderRange(Slider slider, int position) {
+
+        if (sliders == null) {
+            initSliders();
+        }
+
+        SelenideElement sliderSelenideElement = sliders.get(slider);
+
+        new Actions(getWebDriver()).clickAndHold(sliderSelenideElement)
+                .moveToElement(sliderLength, (sliderLength.getSize().width*position/100), 0).release().build().perform();
+        new Actions(getWebDriver()).clickAndHold(sliderSelenideElement)
+                .moveToElement(sliderLength, (sliderLength.getSize().width*position/100), 0).release().build().perform();
+    }*/
 
     public void checkLog(Slider slider, int position) {
         if (sliders == null) {

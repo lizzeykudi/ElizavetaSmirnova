@@ -1,6 +1,7 @@
 package hw5;
 
-import JDI.PagesMetaInfo;
+import JDI.pagesInfo.MainPages;
+import JDI.pagesInfo.ServiceMenuPages;
 import com.codeborne.selenide.Configuration;
 import hw4.pages.differentElementPage.DifferentElements;
 import globalVariables.Texts;
@@ -36,7 +37,7 @@ public class ServicePageInterfaceTestUnwork {
     public void beforeTest() {
         Configuration.browser = "CHROME";
         Configuration.startMaximized = true;
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.baseUrl = MainPages.HOME.url;
         Configuration.browserSize = "1366x768";
     }
 
@@ -44,7 +45,7 @@ public class ServicePageInterfaceTestUnwork {
     @Test(groups = "HW5")
     public void jdiTest() {
         Configuration.browser = "CHROME";
-        Configuration.baseUrl = PagesMetaInfo.HOME.url;
+        Configuration.baseUrl = MainPages.HOME.url;
         Configuration.browserSize = "1366x768";
         //1 Open test site by URL
         indexPageSelenide = open(IndexPage.URL, IndexPage.class);
@@ -59,7 +60,7 @@ public class ServicePageInterfaceTestUnwork {
         indexPageSelenide.assertUserName(Users.PETER);
 
         //5 Click on "Service" subcategory in the header and check that drop down contains options
-        indexPageSelenide.assertHeaderServiceContainsOptions(Texts.SERVICE_TEXTS.texts);
+        indexPageSelenide.assertHeaderServiceContainsOptions(ServiceMenuPages.getValues());
 
         //6 Click on Service subcategory in the left section and check that drop down contains options
         indexPageSelenide.assertLeftServiceContainsOptions(Collections.singletonList(wrongText));

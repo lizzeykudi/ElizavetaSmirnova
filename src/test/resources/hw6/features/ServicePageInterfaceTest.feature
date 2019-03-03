@@ -3,7 +3,7 @@ Feature: ServicePafeInterface
   Scenario: Login verification
 
     # TODO on 'home' PAGE, I assume...
-    Given I am on "Home"
+    Given I am on "Home" page
     Then Browser title 'Home Page'
     When I login as user "PETER"
     Then User name should be 'PETER'
@@ -26,7 +26,7 @@ Feature: ServicePafeInterface
       | TABLE WITH PAGES   |
       | DIFFERENT ELEMENTS |
       | PERFORMANCE        |
-    Given I am on "Different_Elements"
+    Given I am on "Different_Elements" through header menu
     Then Page contains 4 checkboxes, 4 radios, 1 dropdown, 2 buttons
     Then there is right Section
     Then there is left Section

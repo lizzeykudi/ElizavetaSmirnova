@@ -69,7 +69,7 @@
     </dependencies>
 
 
-   <!-- <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -91,7 +91,7 @@
                 </dependencies>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 
     <reporting>
         <excludeDefaults>true</excludeDefaults>
