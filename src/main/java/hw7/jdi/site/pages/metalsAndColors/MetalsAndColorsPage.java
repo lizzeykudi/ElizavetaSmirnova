@@ -9,6 +9,7 @@ import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.jdi.light.ui.html.complex.*;
 import hw7.jdi.site.Sections.header.Header;
 
+// TODO Code convention ?? Why don't you reformat your code before commit ??
 public class MetalsAndColorsPage extends WebPage {
     public Header header;
 
