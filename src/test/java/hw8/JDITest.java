@@ -111,6 +111,7 @@ public class JDITest extends TestInit {
         ArrayList<TestData> list=new ArrayList<>();
         JsonElement dataSet = null;
         int i = 1;
+        // TODO Your algorithm should not depends on data set names !
         dataSet = jsonData.getAsJsonObject().get("data_"+i);
         while (dataSet!=null) {
         GsonBuilder builder=new GsonBuilder();
