@@ -84,7 +84,7 @@ public class JDITest extends TestInit {
     }
 
 
-    @DataProvider(parallel = true)
+    @DataProvider()
     public Object[][] getData() throws FileNotFoundException {
         JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/resources/hw8/JDI_ex8_metalsColorsDataSet.json"));
         ArrayList<TestData> list=new ArrayList<>();
@@ -101,14 +101,6 @@ public class JDITest extends TestInit {
             dataSet = jsonData.getAsJsonObject().get("data_"+i);
         }
 
-
-        /*List<TestData> testData = new Gson().fromJson(dataSet, new TypeToken<List<TestData>>(){}.getType());
-        Object[][] returnValue = new Object[testData.size()][1];
-        int index = 0;
-        for (Object[] each : returnValue) {
-            each[0] = testData.get(index++);
-        }
-        return returnValue;*/
         Object[][] objects = new Object[list.size()][1];
         for (int y = 0; y<list.size(); y++) {
             objects[y][0] = list.get(y); 

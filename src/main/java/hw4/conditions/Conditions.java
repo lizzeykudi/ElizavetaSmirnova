@@ -21,6 +21,11 @@ public class Conditions {
             }
 
             @Override
+            public boolean applyNull() {
+                return false;
+            }
+
+            @Override
             public boolean apply(@Nullable List<WebElement> webElements) {
                 return webElements.stream()
                         .map(webElement -> webElement.getText().substring(9))
@@ -39,6 +44,11 @@ public class Conditions {
 
                 System.out.println("Expected:" + substrings);
                 throw new RuntimeException("fail");
+            }
+
+            @Override
+            public boolean applyNull() {
+                return false;
             }
 
             @Override
