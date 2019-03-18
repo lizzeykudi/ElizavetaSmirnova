@@ -1,25 +1,12 @@
 package hw8;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 import hw7.TestInit;
 import hw7.jdi.entites.User;
 import hw7.jdi.site.pages.metalsAndColors.MetalsAndColorsPage;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.google.gson.JsonParser;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import com.google.gson.reflect.TypeToken;
-
-import static hw7.jdi.JDISite.homePage;
-import static hw7.jdi.JDISite.metalAndColorsPage;
+import static hw7.jdi.JDISite.*;
 
 // TODO Code convention ??
 /*
@@ -39,7 +26,30 @@ You should have the similar structure:
  */
 public class JDITest extends TestInit {
 
-    @Test(dataProvider = "getData")
+
+    @Test(dataProvider = "getData", dataProviderClass = TestDataDataProvider.class)
+    public void jdiTest(TestData data) {
+        homePage.open();
+
+        //1 Login on JDI site
+        homePage.header.login(User.PITER_CHAILOVSKII);
+        homePage.checkOpened();
+
+        //2 Open Metal&Color page by Header menu
+        menu.select("METALS & COLORS");
+        metalAndColorsPage.checkOpened();
+
+        //3 Submit form Metal&Color
+
+        MetalsAndColorsPage.fillFormAndCalculateButtonClick(data.createAndGetSummary());
+        MetalsAndColorsPage.fillFormAndSubmitButtonClick(data.createAndGetSubmit());
+
+        //4 Result sections should contains
+        Assert.assertTrue(MetalsAndColorsPage.getLog().containsAll(MetalsAndColorsPage.getExpectedLog(data)));
+    }
+}
+
+    /*@Test(dataProvider = "getData")
     public void jdiTest(TestData data) {
         //System.out.println(data);
 
@@ -129,5 +139,4 @@ public class JDITest extends TestInit {
         }
 
         return objects;
-    }
-}
+    }*/

@@ -1,5 +1,5 @@
 package hw7.jdi.entites;
 
-public enum Color {
+public enum Color{
     Red, Green, Blue, Yellow
 }

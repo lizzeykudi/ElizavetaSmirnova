@@ -5,17 +5,41 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>epam.com</groupId>
-    <artifactId>homework-ElizavetaSmirnova</artifactId>
+    <artifactId>automation-winter-2019</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+    <dependencies>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
 
-   <!-- <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-testng</artifactId>
@@ -29,44 +53,111 @@
             <version>1.2.5</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>selenide</artifactId>
-            <version>4.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>compile</scope>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/io.qameta.allure/allure-testng &ndash;&gt;
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.0-BETA3</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.jdi</groupId>
-            <artifactId>jdi-light-html</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.7.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
-    </dependencies>-->
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src\test\resources\testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
+
+
+
+
+
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>epam.com</groupId>
+    <artifactId>homework-ElizavetaSmirnova</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+    &lt;!&ndash; <dependencies>
+         <dependency>
+             <groupId>info.cukes</groupId>
+             <artifactId>cucumber-testng</artifactId>
+             <version>1.2.5</version>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+             <groupId>info.cukes</groupId>
+             <artifactId>cucumber-java</artifactId>
+             <version>1.2.5</version>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+             <groupId>com.codeborne</groupId>
+             <artifactId>selenide</artifactId>
+             <version>4.8</version>
+         </dependency>
+         <dependency>
+             <groupId>org.testng</groupId>
+             <artifactId>testng</artifactId>
+             <version>6.14.3</version>
+             <scope>compile</scope>
+         </dependency>
+         &lt;!&ndash; https://mvnrepository.com/artifact/io.qameta.allure/allure-testng &ndash;&gt;
+         <dependency>
+             <groupId>io.qameta.allure</groupId>
+             <artifactId>allure-testng</artifactId>
+             <version>2.0-BETA3</version>
+         </dependency>
+         <dependency>
+             <groupId>javax.xml.bind</groupId>
+             <artifactId>jaxb-api</artifactId>
+             <version>2.3.0</version>
+         </dependency>
+         <dependency>
+             <groupId>com.epam.jdi</groupId>
+             <artifactId>jdi-light-html</artifactId>
+             <version>LATEST</version>
+         </dependency>
+         <dependency>
+             <groupId>org.seleniumhq.selenium</groupId>
+             <artifactId>selenium-java</artifactId>
+             <version>3.7.1</version>
+         </dependency>
+         <dependency>
+             <groupId>com.google.code.gson</groupId>
+             <artifactId>gson</artifactId>
+             <version>2.8.5</version>
+         </dependency>
+     </dependencies>&ndash;&gt;
 
     <dependencies>
 
@@ -117,39 +208,38 @@
     </dependencies>
 
 
- <!--   <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <configuration>
-                    <suiteXmlFiles>src/test/resources/hw5/testng.xml</suiteXmlFiles>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <argLine>
-                        -noverify -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.7.3/aspectjweaver-1.7.3.jar"
-                    </argLine>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>1.8.3</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    &lt;!&ndash;   <build>
+           <plugins>
+               <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-surefire-plugin</artifactId>
+                   <version>2.18.1</version>
+                   <configuration>
+                       <suiteXmlFiles>src/test/resources/hw5/testng.xml</suiteXmlFiles>
+                       <testFailureIgnore>true</testFailureIgnore>
+                       <argLine>
+                           -noverify -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.7.3/aspectjweaver-1.7.3.jar"
+                       </argLine>
+                   </configuration>
+                   <dependencies>
+                       <dependency>
+                           <groupId>org.aspectj</groupId>
+                           <artifactId>aspectjweaver</artifactId>
+                           <version>1.8.3</version>
+                       </dependency>
+                   </dependencies>
+               </plugin>
+           </plugins>
+       </build>
+       <reporting>
+           <excludeDefaults>true</excludeDefaults>
+           <plugins>
+               <plugin>
+                   <groupId>io.qameta.allure</groupId>
+                   <artifactId>allure-maven</artifactId>
+                   <version>2.9</version>
+               </plugin>
+           </plugins>
+       </reporting>&ndash;&gt;
 
-    <reporting>
-        <excludeDefaults>true</excludeDefaults>
-        <plugins>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
-            </plugin>
-        </plugins>
-    </reporting>-->
-
-</project>
+</project>-->
